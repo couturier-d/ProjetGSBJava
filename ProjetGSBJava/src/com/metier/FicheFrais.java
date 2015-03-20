@@ -20,11 +20,11 @@ public class FicheFrais {
 	List <LigneFraisForfait> listeFraisForfait;
 	List <LigneFraisHorsForfait> listeFraisHorsForfait;
 	
-	
 	/**
 	 * Constructeur ficheFrais
+	 * @param unMois
+	 * @param unIdVisiteur
 	 */
-	
 	public FicheFrais(int unMois, String unIdVisiteur) {
 		this.mois = unMois;
 		this.idVisiteur = unIdVisiteur;
@@ -60,7 +60,7 @@ public class FicheFrais {
 	}
 	
 	/**
-	 * mutateur mois
+	 * mutateur mois (uniquement pour hibernate)
 	 * @param mois
 	 */
 	public void setMois(int mois) {

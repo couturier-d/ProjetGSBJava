@@ -27,7 +27,7 @@ public class FraisForfait {
 	}
 
 	/**
-	 * mutateur idFraisForfait
+	 * mutateur idFraisForfait (uniquement pour hibernate)
 	 * @param idFraisForfait
 	 */
 	public void setIdFraisForfait(String idFraisForfait) {
