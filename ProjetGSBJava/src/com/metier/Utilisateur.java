@@ -34,13 +34,13 @@ public class Utilisateur {
 	 * @param uneDateEmbauche
 	 * @param uneRegion
 	 */
-	public Utilisateur(String unIdTypeUtilisateur, String unNom, String unPrenom, String uneDateEmbauche, Region uneRegion) {
+	public Utilisateur(String unIdUtilisateur, String unIdTypeUtilisateur, String unNom, String unPrenom, String uneDateEmbauche, Region uneRegion) {
 		super();
-		this.idUtilisateur = genererIdentifiant();
+		this.idUtilisateur = unIdUtilisateur;
 		this.idTypeUtilisateur = unIdTypeUtilisateur;
 		this.nom = unNom;
 		this.prenom = unPrenom;
-		this.login = genererLogin();
+		this.login = genererLogin(unNom, unPrenom);
 		this.motDePasse = genererMdp(unNom, unPrenom, uneDateEmbauche);
 		this.adresse = null;
 		this.codePostal = null;
@@ -48,7 +48,7 @@ public class Utilisateur {
 		this.dateEmbauche = uneDateEmbauche;
 		this.numeroPortable = null;
 		this.numeroFixe = null;
-		this.adresseMail = genererMail();
+		this.adresseMail = genererMail(unNom, unPrenom);
 		this.region = uneRegion;
 		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
@@ -329,21 +329,11 @@ public class Utilisateur {
 	}
 	
 	/**
-	 * Générateur automatique de l'id d'un objet Utilisateur
-	 * @return id
-	 */
-	private String genererIdentifiant() {
-		// A MODIFIER!
-		String id = "g";
-		return id;
-	}
-	
-	/**
 	 * Générateur automatique du login d'un objet Utilisateur
 	 * @return login
 	 */
-	private String genererLogin() {
-		String login = this.prenom.substring(0, 0) + this.nom;
+	private String genererLogin(String nom, String prenom) {
+		String login = prenom.substring(0, 0) + nom;
 		return login;
 	}
 	
@@ -360,8 +350,8 @@ public class Utilisateur {
 	 * Générateur automatique de l'adresse mail d'un objet Utilisateur
 	 * @return mail
 	 */
-	private String genererMail() {
-		String mail = this.nom + "." + this.prenom + "@gsb.fr";
+	private String genererMail(String nom, String prenom) {
+		String mail = nom + "." + prenom + "@gsb.fr";
 		return mail;
 	}
 	
