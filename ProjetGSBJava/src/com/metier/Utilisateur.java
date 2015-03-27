@@ -303,16 +303,16 @@ public class Utilisateur {
 	}
 	
 	/**
-	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son id
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
 	 * @param idUtilisateur
 	 * @return resultat
 	 */
-	public FicheFrais getUneFicheFrais(String idFicheFrais) {
+	public FicheFrais getUneFicheFrais(String mois) {
 		FicheFrais resultat = null;
 		int index = 0;
 		boolean trouve = false;
 		while(trouve == false && index < listeFicheFrais.size()) {
-			if(idFicheFrais == listeFicheFrais.get(index).getIdFicheFrais()) {
+			if(mois == listeFicheFrais.get(index).getMois()) {
 				resultat = listeFicheFrais.get(index);
 			}
 			index = index++;
