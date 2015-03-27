@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class FicheFrais {
 
-	int mois;
-	String idVisiteur;
+	String mois;
+	Utilisateur utilisateur;
 	int nbJustificatifs;
-	int montantValide;
+	double montantValide;
 	String dateModif;
 	List <LigneFraisForfait> listeFraisForfait;
 	List <LigneFraisHorsForfait> listeFraisHorsForfait;
@@ -24,9 +24,9 @@ public class FicheFrais {
 	 * @param unMois
 	 * @param unIdVisiteur
 	 */
-	public FicheFrais(int unMois, String unIdVisiteur) {
+	public FicheFrais(String unMois, Utilisateur unUtilisateur) {
 		this.mois = unMois;
-		this.idVisiteur = unIdVisiteur;
+		this.utilisateur = unUtilisateur;
 		this.nbJustificatifs = 0;
 		this.montantValide = 0;
 		this.dateModif = null;
@@ -38,7 +38,7 @@ public class FicheFrais {
 	 * accesseur mois
 	 * @return mois
 	 */
-	public int getMois() {
+	public String getMois() {
 		return mois;
 	}
 	
@@ -46,7 +46,7 @@ public class FicheFrais {
 	 * mutateur mois (uniquement pour hibernate)
 	 * @param mois
 	 */
-	public void setMois(int mois) {
+	public void setMois(String mois) {
 		this.mois = mois;
 	}
 
@@ -54,16 +54,16 @@ public class FicheFrais {
 	 * accesseur idVisiteur
 	 * @return v
 	 */
-	public String getIdVisiteur() {
-		return idVisiteur;
+	public Utilisateur getUtilisateur() {
+		return this.utilisateur;
 	}
 	
 	/**
 	 * mutateur idVisiteur
 	 * @param idVisiteur
 	 */
-	public void setIdVisiteur(String idVisiteur) {
-		this.idVisiteur = idVisiteur;
+	public void setUtilisateur(Utilisateur unUtilisateur) {
+		this.utilisateur = unUtilisateur;
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class FicheFrais {
 	 * accesseur montantValide
 	 * @return montantValide
 	 */
-	public int getMontantValide() {
+	public double getMontantValide() {
 		return montantValide;
 	}
 	
@@ -161,17 +161,14 @@ public class FicheFrais {
 	public int getNbFraisHorsForfait() {
 		return listeFraisHorsForfait.size();
 	}
-
+	
 	/**
 	 * Methode to string sur FicheFrais
 	 */
 	@Override
 	public String toString() {
-		return "FicheFrais [mois=" + mois
-				+ ", idVisiteur=" + idVisiteur + ", nbJustificatifs="
-				+ nbJustificatifs + ", montantValide=" + montantValide
-				+ ", dateModif=" + dateModif + ", listeFraisForfait="
-				+ listeFraisForfait + ", listeFraisHorsForfait="
-				+ listeFraisHorsForfait + "]";
+		return "FicheFrais [mois=" + mois + ", utilisateur=" + utilisateur.toString()
+				+ ", nbJustificatifs=" + nbJustificatifs + ", montantValide="
+				+ montantValide + ", dateModif=" + dateModif + "]";
 	}
 }

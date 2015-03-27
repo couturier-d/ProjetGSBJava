@@ -7,14 +7,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.metier.FicheFrais;
+import com.metier.Region;
+import com.metier.Utilisateur;
 
 public class FicheFraisTest {
 
+	Utilisateur utilisateur, utilisateur2;
+	Region region;
 	FicheFrais fiche1;
 	
 	@Before
 	public void setUp() throws Exception {
-		fiche1 = new FicheFrais(201503, "a17");
+		region = new Region("1", "Pays de la Loire");
+		utilisateur = new Utilisateur("Secrétaire", "Andre", "David", "27/03/2015", region);
+		utilisateur2 = new Utilisateur("Secrétaire", "Smith", "John", "28/03/2015", region);
+		fiche1 = new FicheFrais("201503", utilisateur);
 	}
 
 	@After
@@ -31,27 +38,27 @@ public class FicheFraisTest {
 	//test accesseur mois
 	@Test
 	public void testGetMois() {
-		assertEquals("Test accesseur mois", fiche1.getMois(), 201503);
+		assertEquals("Test accesseur mois", fiche1.getMois(), "201503");
 	}
 	
 	//test mutateur mois (pour hibernate)
 	@Test
 	public void testSetMois() {
-		fiche1.setMois(201504);
-		assertEquals("Test accesseur mois", fiche1.getMois(), 201504);
+		fiche1.setMois("201504");
+		assertEquals("Test accesseur mois", fiche1.getMois(), "201504");
 	}
 	
 	//test accesseur idVisiteur
 	@Test
-	public void testGetIdVisiteur() {
-		assertEquals("Test accesseur idVisiteur", fiche1.getIdVisiteur(), "a17");
+	public void testGetUtilisateur() {
+		assertEquals("Test accesseur idVisiteur", fiche1.getUtilisateur(), utilisateur);
 	}
 	
 	//test mutateur idVisiteur (pour hibernate)
 	@Test
-	public void testsetIdVisiteur() {
-		fiche1.setIdVisiteur("a18");
-		assertEquals("Test accesseur idVisiteur", fiche1.getIdVisiteur(), "a18");
+	public void testSetIdVisiteur() {
+		fiche1.setUtilisateur(utilisateur2);
+		assertEquals("Test accesseur idVisiteur", fiche1.getUtilisateur(), utilisateur2);
 	}
 	
 	
