@@ -377,7 +377,7 @@ public class Utilisateur {
 				+ codePostal + ", ville=" + ville + ", dateEmbauche="
 				+ dateEmbauche + ", numeroPortable=" + numeroPortable
 				+ ", numeroFixe=" + numeroFixe + ", adresseMail=" + adresseMail
-				+ ", region=" + region + "]";
+				+ ", region=" + region.toString() + "]";
 	}
 
 }

@@ -170,8 +170,6 @@ public class FicheFrais {
 		return "FicheFrais [mois=" + mois
 				+ ", idVisiteur=" + idVisiteur + ", nbJustificatifs="
 				+ nbJustificatifs + ", montantValide=" + montantValide
-				+ ", dateModif=" + dateModif + ", listeFraisForfait="
-				+ listeFraisForfait + ", listeFraisHorsForfait="
-				+ listeFraisHorsForfait + "]";
+				+ ", dateModif=" + dateModif + "]";
 	}
 }
