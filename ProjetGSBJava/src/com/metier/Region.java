@@ -126,7 +126,7 @@ public class Region {
 	@Override
 	public String toString() {
 		return "Region [idRegion=" + idRegion + ", nomRegion=" + nomRegion
-				+ ", listeUtilisateur=" + listeUtilisateur + "]";
+				+ "]";
 	}
 	
 }
