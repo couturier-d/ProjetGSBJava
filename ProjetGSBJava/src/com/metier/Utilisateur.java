@@ -24,6 +24,7 @@ public class Utilisateur {
 	private String numeroFixe;
 	private String adresseMail;
 	private Region region;
+	private List<FicheFrais> listeFicheFrais;
 
 	/**
 	 * Constructeur de la classe Utilisateur
@@ -40,7 +41,7 @@ public class Utilisateur {
 		this.nom = unNom;
 		this.prenom = unPrenom;
 		this.login = genererLogin();
-		this.motDePasse = genererMdp();
+		this.motDePasse = genererMdp(unNom, unPrenom, uneDateEmbauche);
 		this.adresse = null;
 		this.codePostal = null;
 		this.ville = null;
@@ -49,6 +50,7 @@ public class Utilisateur {
 		this.numeroFixe = null;
 		this.adresseMail = genererMail();
 		this.region = uneRegion;
+		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
 
 	/**
@@ -276,6 +278,57 @@ public class Utilisateur {
 	}
 
 	/**
+	 * Accesseur de la liste de fiches de frais de l'objet Utilisateur
+	 * @return listeFicheFrais
+	 */
+	public List<FicheFrais> getLesFichesFrais() {
+		return listeFicheFrais;
+	}
+	
+	/**
+	 * Mutateur de la liste de fiches de frais de l'objet Utilisateur
+	 * @param listeFicheFrais
+	 */
+	public void setLesFicheFrais(List<FicheFrais> listeFicheFrais) {
+		this.listeFicheFrais = listeFicheFrais;
+	}
+	
+	/**
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
+	 * @param index
+	 * @return listeFicheFrais.get(index)
+	 */
+	public FicheFrais getUneFicheFrais(int index) {
+		return listeFicheFrais.get(index);
+	}
+	
+	/**
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son id
+	 * @param idUtilisateur
+	 * @return resultat
+	 */
+	public FicheFrais getUneFicheFrais(String idFicheFrais) {
+		FicheFrais resultat = null;
+		int index = 0;
+		boolean trouve = false;
+		while(trouve == false && index < listeFicheFrais.size()) {
+			if(idFicheFrais == listeFicheFrais.get(index).getIdFicheFrais()) {
+				resultat = listeFicheFrais.get(index);
+			}
+			index = index++;
+		}
+		return resultat;
+	}
+
+	/**
+	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
+	 * @return taille
+	 */
+	public int getNbFicheFrais() {
+		return listeFicheFrais.size();
+	}
+	
+	/**
 	 * Générateur automatique de l'id d'un objet Utilisateur
 	 * @return id
 	 */
@@ -298,8 +351,8 @@ public class Utilisateur {
 	 * Générateur automatique du mot de passe d'un objet Utilisateur
 	 * @return mdp
 	 */
-	private String genererMdp() {
-		String mdp = this.nom.substring(0, 3) + this.prenom.substring(0, 0) + this.dateEmbauche.substring(0, 3);
+	private String genererMdp(String nom, String prenom, String dateEmbauche) {
+		String mdp = nom.substring(0, 3) + prenom.substring(0, 0) + dateEmbauche.substring(0, 3);
 		return mdp;
 	}
 	
@@ -327,5 +380,4 @@ public class Utilisateur {
 				+ ", region=" + region + "]";
 	}
 
-	
 }

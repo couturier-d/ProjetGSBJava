@@ -97,6 +97,20 @@ public class Region {
 		}
 		return resultat;
 	}
+	
+	/**
+	 * Méthode d'ajout d'un objet Utilisateur, et vérifie si le paramètre région de l'objet Utilisateur correspond à cette région
+	 * @param unUtilisateur
+	 * @return resultat
+	 */
+	public boolean addUtilisateur(Utilisateur unUtilisateur) {
+		boolean resultat = false;
+		if(unUtilisateur.getRegion() == this) {
+			listeUtilisateur.add(unUtilisateur);
+			resultat = true;
+		}
+		return resultat;
+	}
 
 	/**
 	 * Accesseur de la taille de la liste d'utilisateurs de l'objet Region
@@ -114,6 +128,5 @@ public class Region {
 		return "Region [idRegion=" + idRegion + ", nomRegion=" + nomRegion
 				+ ", listeUtilisateur=" + listeUtilisateur + "]";
 	}
-	
 	
 }

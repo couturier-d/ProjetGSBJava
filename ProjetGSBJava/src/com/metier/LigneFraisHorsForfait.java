@@ -120,6 +120,5 @@ public class LigneFraisHorsForfait {
 				+ libelleFraisHorsForfait + ", date=" + date + ", montant="
 				+ montant + "]";
 	}
-
 	
 }
