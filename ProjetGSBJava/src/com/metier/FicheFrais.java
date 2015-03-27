@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class FicheFrais {
 
-	String idFicheFrais;
 	int mois;
 	String idVisiteur;
 	int nbJustificatifs;
@@ -33,22 +32,6 @@ public class FicheFrais {
 		this.dateModif = null;
 		this.listeFraisForfait = new ArrayList<LigneFraisForfait>();
 		this.listeFraisHorsForfait = new ArrayList<LigneFraisHorsForfait>();
-	}
-
-	/**
-	 * accesseur idFicheFrais
-	 * @returnidFicheFrais
-	 */
-	public String getIdFicheFrais() {
-		return idFicheFrais;
-	}
-	
-	/**
-	 * mutateur idFicheFrais (uniquement pour hibernate)
-	 * @param idFicheFrais
-	 */
-	public void setIdFicheFrais(String idFicheFrais) {
-		this.idFicheFrais = idFicheFrais;
 	}
 
 	/**
@@ -184,7 +167,7 @@ public class FicheFrais {
 	 */
 	@Override
 	public String toString() {
-		return "FicheFrais [idFicheFrais=" + idFicheFrais + ", mois=" + mois
+		return "FicheFrais [mois=" + mois
 				+ ", idVisiteur=" + idVisiteur + ", nbJustificatifs="
 				+ nbJustificatifs + ", montantValide=" + montantValide
 				+ ", dateModif=" + dateModif + ", listeFraisForfait="
