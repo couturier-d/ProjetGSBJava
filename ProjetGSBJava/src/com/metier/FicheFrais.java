@@ -94,7 +94,7 @@ public class FicheFrais {
 	 * mutateur montantValide
 	 * @param montantValide
 	 */
-	public void setMontantValide(int montantValide) {
+	public void setMontantValide(double montantValide) {
 		this.montantValide = montantValide;
 	}
 
