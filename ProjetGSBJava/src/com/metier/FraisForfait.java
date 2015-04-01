@@ -28,7 +28,6 @@ public class FraisForfait {
 	public String getIdFraisForfait() {
 		return idFraisForfait;
 	}
-
 	/**
 	 * mutateur idFraisForfait (uniquement pour hibernate)
 	 * @param idFraisForfait
@@ -44,7 +43,6 @@ public class FraisForfait {
 	public String getLibelleFraisForfait() {
 		return libelleFraisForfait;
 	}
-
 	/**
 	 * mutateur libelleFraisForfait
 	 * @param libelleFraisForfait
@@ -53,7 +51,6 @@ public class FraisForfait {
 		this.libelleFraisForfait = libelleFraisForfait;
 	}
 	
-
 	/**
 	 * accesseur montantFraisForfait
 	 * @return montantFraisForfait

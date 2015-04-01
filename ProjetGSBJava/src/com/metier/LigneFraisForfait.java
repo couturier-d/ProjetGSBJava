@@ -4,11 +4,10 @@ package com.metier;
  * Classe LigneFraisForfait
  * Gère les ligne de frais frofaitisés
  * @author couturier-d
- *
  */
 public class LigneFraisForfait {
 	
-	private String idFraisForfait;
+	private String idFraisForfait; // A verifier !
 	private int quantite;
 	private FicheFrais ficheFrais;
 	private FraisForfait fraisForfait;
@@ -57,6 +56,21 @@ public class LigneFraisForfait {
 	 */
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
+	}
+	
+	
+	public FicheFrais getFicheFrais() {
+		return ficheFrais;
+	}
+	public void setFicheFrais(FicheFrais ficheFrais) {
+		this.ficheFrais = ficheFrais;
+	}
+	
+	public FraisForfait getFraisForfait() {
+		return fraisForfait;
+	}
+	public void setFraisForfait(FraisForfait fraisForfait) {
+		this.fraisForfait = fraisForfait;
 	}
 	
 	/**
