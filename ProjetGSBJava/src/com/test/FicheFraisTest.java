@@ -2,11 +2,14 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.metier.FicheFrais;
+import com.metier.FraisForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
 
@@ -19,9 +22,18 @@ public class FicheFraisTest {
 	@Before
 	public void setUp() throws Exception {
 		region = new Region("1", "Pays de la Loire");
-		utilisateur = new Utilisateur("Secrétaire", "Andre", "David", "27/03/2015", region);
-		utilisateur2 = new Utilisateur("Secrétaire", "Smith", "John", "28/03/2015", region);
+		utilisateur = new Utilisateur("Secrétaire", "S","Andre", "David", "27/03/2015", region);
+		utilisateur2 = new Utilisateur("Secrétaire", "S","Smith", "John", "28/03/2015", region);
+		
 		fiche1 = new FicheFrais("201503", utilisateur);
+		ArrayList<FraisForfait> lesFraisForfait = new ArrayList<FraisForfait>();
+		
+		/*FraisForfait fraisF1;
+		FraisForfait fraisF1;
+		FraisForfait fraisF1;
+		FraisForfait fraisF1;
+		
+		FraisHorsForfait fraisF1;*/
 	}
 
 	@After
@@ -56,7 +68,7 @@ public class FicheFraisTest {
 	
 	//test mutateur idVisiteur (pour hibernate)
 	@Test
-	public void testSetIdVisiteur() {
+	public void testSetUtilisateur() {
 		fiche1.setUtilisateur(utilisateur2);
 		assertEquals("Test accesseur idVisiteur", fiche1.getUtilisateur(), utilisateur2);
 	}
@@ -111,6 +123,12 @@ public class FicheFraisTest {
 	public void testSetEtat() {
 		fiche1.setEtat("CL");
 		assertEquals("Test accesseur montantValide", fiche1.getEtat(), "CL");
+	}
+	
+	// test accesseur liste LigneFraisForfait
+	@Test
+	public void testGetListeFraisForfait() {
+		
 	}
 	
 }
