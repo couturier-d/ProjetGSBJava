@@ -9,13 +9,16 @@ package com.metier;
 public class FraisForfait {
 	private String idFraisForfait;
 	private String libelleFraisForfait;
-	
+	private double montantFraisForfait;
+
 	/**
 	 * Constructeur FraisForfait
 	 *  @param unLibelleFraisForfait
 	 */
-	public FraisForfait(String unLibelleFraisForfait) {
+	public FraisForfait(String unIdFraisForfait ,String unLibelleFraisForfait, double unMontant) {
+		this.idFraisForfait = unIdFraisForfait;
 		this.libelleFraisForfait = unLibelleFraisForfait;
+		this.montantFraisForfait = unMontant;
 	}
 
 	/**
@@ -49,6 +52,23 @@ public class FraisForfait {
 	public void setLibelleFraisForfait(String libelleFraisForfait) {
 		this.libelleFraisForfait = libelleFraisForfait;
 	}
+	
+
+	/**
+	 * accesseur montantFraisForfait
+	 * @return montantFraisForfait
+	 */
+	public double getMontant() {
+		return montantFraisForfait;
+	}
+
+	/**
+	 * mutateur montantFraisForfait
+	 * @param unMontant
+	 */
+	public void setMontant(double unMontant) {
+		this.montantFraisForfait = unMontant;
+	}
 
 	/**
 	 * Methode to string sur FraisForfait
@@ -57,7 +77,4 @@ public class FraisForfait {
 	public String toString() {
 		return "libelleFraisForfait ="+libelleFraisForfait;
 	}
-	
-	
-
 }

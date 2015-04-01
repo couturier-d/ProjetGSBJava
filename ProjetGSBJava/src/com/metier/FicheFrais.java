@@ -7,17 +7,17 @@ import java.util.List;
  * Classe FicheFrais
  * Gère les fiches de frais des utilisateurs
  * @author couturier-d
- *
  */
 public class FicheFrais {
 
-	String mois;
-	Utilisateur utilisateur;
-	int nbJustificatifs;
-	double montantValide;
-	String dateModif;
-	List <LigneFraisForfait> listeFraisForfait;
-	List <LigneFraisHorsForfait> listeFraisHorsForfait;
+	private String mois;
+	private Utilisateur utilisateur;
+	private int nbJustificatifs;
+	private double montantValide;
+	private String dateModif;
+	private List <LigneFraisForfait> listeFraisForfait;
+	private List <LigneFraisHorsForfait> listeFraisHorsForfait;
+	private String etat;
 	
 	/**
 	 * Constructeur ficheFrais
@@ -30,6 +30,7 @@ public class FicheFrais {
 		this.nbJustificatifs = 0;
 		this.montantValide = 0;
 		this.dateModif = null;
+		this.etat = "CR";
 		this.listeFraisForfait = new ArrayList<LigneFraisForfait>();
 		this.listeFraisHorsForfait = new ArrayList<LigneFraisHorsForfait>();
 	}
@@ -113,6 +114,22 @@ public class FicheFrais {
 	public void setDateModif(String dateModif) {
 		this.dateModif = dateModif;
 	}
+	
+	/**
+	 * accesseur etat
+	 * @return etat
+	 */
+	public String getEtat() {
+		return etat;
+	}
+
+	/**
+	 * mutateur etat
+	 * @param etat
+	 */
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
 
 	/**
 	 * mutateur listeFraisForfait
@@ -126,7 +143,7 @@ public class FicheFrais {
 	 * mutateur listeFraisForfait
 	 * @param listeFraisForfait
 	 */
-	public void setListeFraisForfait(ArrayList<LigneFraisForfait> listeFraisForfait) {
+	public void setListeFraisForfait(List<LigneFraisForfait> listeFraisForfait) {
 		this.listeFraisForfait = listeFraisForfait;
 	}
 
@@ -142,7 +159,7 @@ public class FicheFrais {
 	 * mutateur listeFraisHorsForfait
 	 * @param listeFraisHorsForfait
 	 */
-	public void setListeFraisHorsForfait(ArrayList<LigneFraisHorsForfait> listeFraisHorsForfait) {
+	public void setListeFraisHorsForfait(List<LigneFraisHorsForfait> listeFraisHorsForfait) {
 		this.listeFraisHorsForfait = listeFraisHorsForfait;
 	}
 

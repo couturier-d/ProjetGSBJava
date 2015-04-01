@@ -61,7 +61,6 @@ public class FicheFraisTest {
 		assertEquals("Test accesseur idVisiteur", fiche1.getUtilisateur(), utilisateur2);
 	}
 	
-	
 	//test accesseur nbJustificatifs
 	@Test
 	public void testGetNbJustificatifs() {
@@ -75,7 +74,43 @@ public class FicheFraisTest {
 		assertEquals("Test accesseur nbJustificatifs", fiche1.getNbJustificatifs(), 2);
 	}
 	
+	//test accesseur montantValide
+	@Test
+	public void testGetMontantValide() {
+		assertEquals("Test accesseur montantValide", fiche1.getMontantValide(), 0, 1000000);
+	}
 	
-
+	//test mutateur montantValide
+	@Test
+	public void testSetMontantValide() {
+		fiche1.setMontantValide(1000);
+		assertEquals("Test accesseur montantValide", fiche1.getMontantValide(), 1000, 0);
+	}
+	
+	//test accesseur dateModif
+	@Test
+	public void testGetDateModif() {
+		assertEquals("Test accesseur montantValide", fiche1.getDateModif(), null);
+	}
+	
+	//test mutateur montantValide
+	@Test
+	public void testSetDateModif() {
+		fiche1.setDateModif("30/03/2015");
+		assertEquals("Test accesseur montantValide", fiche1.getDateModif(), "30/03/2015");
+	}
+	
+	//test accesseur etat
+	@Test
+	public void testGetEtat() {
+		assertEquals("Test accesseur montantValide", fiche1.getEtat(), "CR");
+	}
+	
+	//test mutateur etat
+	@Test
+	public void testSetEtat() {
+		fiche1.setEtat("CL");
+		assertEquals("Test accesseur montantValide", fiche1.getEtat(), "CL");
+	}
 	
 }

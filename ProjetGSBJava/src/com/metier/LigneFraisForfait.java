@@ -8,70 +8,38 @@ package com.metier;
  */
 public class LigneFraisForfait {
 	
-	int mois;
-	String idVisiteur;
-	FraisForfait idFraisForfait;
-	int quantite;
+	private String idFraisForfait;
+	private int quantite;
+	private FicheFrais ficheFrais;
+	private FraisForfait fraisForfait;
 	
 	/**
 	 * Constructeur LigneFraisForfait
-	 * @param mois
-	 * @param idVisiteur
 	 * @param idFraisForfait
 	 * @param quantite
+	 * @param ficheFrais
+	 * @param fraisForfait
 	 */
-	public LigneFraisForfait(int mois, String idVisiteur, FraisForfait idFraisForfait, int quantite) {
+	public LigneFraisForfait(String idFraisForfait, int quantite, FicheFrais ficheFrais, FraisForfait fraisForfait) {
 		super();
-		this.mois = mois;
-		this.idVisiteur = idVisiteur;
 		this.idFraisForfait = idFraisForfait;
 		this.quantite = quantite;
+		this.ficheFrais = ficheFrais;
+		this.fraisForfait = fraisForfait;
 	}
 	/**
-	 * accesseur mois
+	 * accesseur idFraisForfait
 	 * @return mois
 	 */
-	public int getMois() {
-		return mois;
+	public String getIdFraisForfait() {
+		return this.idFraisForfait;
 	}
 
 	/**
 	 * mutateur mois (uniquement pour hibernate)
 	 * @param mois
 	 */
-	public void setMois(int mois) {
-		this.mois = mois;
-	}
-
-	/**
-	 * accesseur idVisiteur
-	 * @return idVisiteur
-	 */
-	public String getIdVisiteur() {
-		return idVisiteur;
-	}
-
-	/**
-	 * mutateur idVisiteur (unqiuement pour hibernate)
-	 * @param idVisiteur
-	 */
-	public void setIdVisiteur(String idVisiteur) {
-		this.idVisiteur = idVisiteur;
-	}
-
-	/**
-	 * accesseur idFraisForfait
-	 * @return idFraisForfait
-	 */
-	public FraisForfait getIdFraisForfait() {
-		return idFraisForfait;
-	}
-
-	/**
-	 * mutateur idFraisForfait
-	 * @param idFraisForfait
-	 */
-	public void setIdFraisForfait(FraisForfait idFraisForfait) {
+	public void setIdFraisForfait(String idFraisForfait) {
 		this.idFraisForfait = idFraisForfait;
 	}
 
@@ -96,11 +64,9 @@ public class LigneFraisForfait {
 	 */
 	@Override
 	public String toString() {
-		return "LigneFraisForfait [mois=" + mois + ", idVisiteur=" + idVisiteur
-				+ ", idFraisForfait=" + idFraisForfait + ", quantite="
-				+ quantite + "]";
+		return "LigneFraisForfait [idFraisForfait=" + idFraisForfait
+				+ ", quantite=" + quantite + ", ficheFrais=" + ficheFrais
+				+ ", fraisForfait=" + fraisForfait + "]";
 	}
-	
-	
 	
 }
