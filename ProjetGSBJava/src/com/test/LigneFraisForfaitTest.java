@@ -36,6 +36,11 @@ public class LigneFraisForfaitTest {
 
 	@After
 	public void tearDown() throws Exception {
+		region = null;
+		utilisateur = null;
+		fiche = null;
+		fiche2 = null;
+		
 		ligneFrais = null;
 		f1 = null;
 		f2 = null;
@@ -43,7 +48,7 @@ public class LigneFraisForfaitTest {
 
 	@Test
 	public void test() {
-		assertNotNull("L'instance est créée ", ligneFrais);
+		assertNotNull("Création nouvelle LigneFraisForfait ", ligneFrais);
 	}
 	
 	//test accesseur id

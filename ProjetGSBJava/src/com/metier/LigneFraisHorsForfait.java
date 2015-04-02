@@ -7,7 +7,7 @@ package com.metier;
  */
 public class LigneFraisHorsForfait {
 
-	private int idFraisHorsForfait;
+	private int idLigneFraisHorsForfait;
 	private String libelleFraisHorsForfait;
 	private String date;
 	private int montant;
@@ -23,7 +23,7 @@ public class LigneFraisHorsForfait {
 	 */
 	public LigneFraisHorsForfait(int unIdFraisHorsForfait, String unLibelleFraisHorsForfait, String uneDate, int unMontant, FicheFrais laFicheFrais) {
 		super();
-		this.idFraisHorsForfait = unIdFraisHorsForfait;
+		this.idLigneFraisHorsForfait = unIdFraisHorsForfait;
 		this.libelleFraisHorsForfait = unLibelleFraisHorsForfait;
 		this.date = uneDate;
 		this.montant = unMontant;
@@ -34,16 +34,16 @@ public class LigneFraisHorsForfait {
 	 * Accesseur de l'id de l'objet LigneFraisHorsForfait
 	 * @return idFraisHorsForfait
 	 */
-	public int getIdFraisHorsForfait() {
-		return idFraisHorsForfait;
+	public int getIdLigneFraisHorsForfait() {
+		return idLigneFraisHorsForfait;
 	}
 
 	/**
 	 * Mutateur de l'id de l'objet LigneFraisHorsForfait
 	 * @param idFraisHorsForfait
 	 */
-	public void setIdFraisHorsForfait(int idFraisHorsForfait) {
-		this.idFraisHorsForfait = idFraisHorsForfait;
+	public void setIdLigneFraisHorsForfait(int idFraisHorsForfait) {
+		this.idLigneFraisHorsForfait = idFraisHorsForfait;
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class LigneFraisHorsForfait {
 	@Override
 	public String toString() {
 		return "LigneFraisHorsForfait [idFraisHorsForfait="
-				+ idFraisHorsForfait + ", libelleFraisHorsForfait="
+				+ idLigneFraisHorsForfait + ", libelleFraisHorsForfait="
 				+ libelleFraisHorsForfait + ", date=" + date + ", montant="
 				+ montant + "]";
 	}
