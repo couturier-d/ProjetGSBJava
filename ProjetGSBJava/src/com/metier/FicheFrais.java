@@ -52,16 +52,16 @@ public class FicheFrais {
 	}
 
 	/**
-	 * accesseur idVisiteur
-	 * @return v
+	 * accesseur utilisateur
+	 * @return utilisateur
 	 */
 	public Utilisateur getUtilisateur() {
 		return this.utilisateur;
 	}
 	
 	/**
-	 * mutateur idVisiteur
-	 * @param idVisiteur
+	 * mutateur utilisateur
+	 * @param utilisateur
 	 */
 	public void setUtilisateur(Utilisateur unUtilisateur) {
 		this.utilisateur = unUtilisateur;

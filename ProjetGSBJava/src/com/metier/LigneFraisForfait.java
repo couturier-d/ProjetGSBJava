@@ -28,7 +28,7 @@ public class LigneFraisForfait {
 	}
 	/**
 	 * accesseur idFraisForfait
-	 * @return mois
+	 * @return idFraisForfait
 	 */
 	public String getIdFraisForfait() {
 		return this.idFraisForfait;
