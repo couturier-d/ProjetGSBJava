@@ -98,13 +98,13 @@ public class RegionTest {
 		r.setLesUtilisateurs(ensUtil2);
 		assertEquals("Le test sur un utilisateur inexistant fonctionne", r.getUnUtilisateur("g1"), null);
 		assertEquals("Le 1er utilisateur est correct", r.getUnUtilisateur("g001"), u1);
-		assertEquals("L'accesseur sur un utilisateur en fonction de l'id fonctionne", r.getUnUtilisateur("g002"), u2);
+		assertEquals("L'accesseur sur un utilisateur en fonction de l'index fonctionne", r.getUnUtilisateur("g002"), u2);
 	}
 	
 	@Test
 	public void testGetNbUtilisateurs() {
 		r.setLesUtilisateurs(ensUtil2);
-		assertEquals("Le cas où aucun utilisateur n'existe est traité", r2.getLesUtilisateurs().size(), 0);
-		assertEquals("L'accesseur sur le nombre d'utilisateurs fonctionne", r.getLesUtilisateurs().size(), 2);
+		assertEquals("Le cas où aucun utilisateur n'existe est traité", r2.getNbUtilisateurs(), 0);
+		assertEquals("L'accesseur sur le nombre d'utilisateurs fonctionne", r.getNbUtilisateurs(), 2);
 	}
 }
