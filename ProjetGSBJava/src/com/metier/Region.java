@@ -90,10 +90,14 @@ public class Region {
 	 */
 	public Utilisateur getUnUtilisateur(String idUtilisateur) {
 		Utilisateur resultat = null;
-		for(Utilisateur util : listeUtilisateur) {
-			if(util.getIdUtilisateur() == idUtilisateur) {
-				resultat = util;
+		int index = 0;
+		boolean trouve = false;
+		while((trouve == false) && (index < listeUtilisateur.size())) {
+			if(idUtilisateur == listeUtilisateur.get(index).getIdUtilisateur()) {
+				resultat = listeUtilisateur.get(index);
+				trouve = true;
 			}
+			index = index + 1;
 		}
 		return resultat;
 	}

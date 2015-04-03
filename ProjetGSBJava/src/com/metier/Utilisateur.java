@@ -40,15 +40,15 @@ public class Utilisateur {
 		this.idTypeUtilisateur = unIdTypeUtilisateur;
 		this.nom = unNom;
 		this.prenom = unPrenom;
-		this.login = genererLogin(unNom, unPrenom);
-		this.motDePasse = genererMdp(unNom, unPrenom, uneDateEmbauche);
+		this.login = null;
+		this.motDePasse = null;
 		this.adresse = null;
 		this.codePostal = null;
 		this.ville = null;
 		this.dateEmbauche = uneDateEmbauche;
 		this.numeroPortable = null;
 		this.numeroFixe = null;
-		this.adresseMail = genererMail(unNom, unPrenom);
+		this.adresseMail = null;
 		this.region = uneRegion;
 		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
@@ -289,7 +289,7 @@ public class Utilisateur {
 	 * Mutateur de la liste de fiches de frais de l'objet Utilisateur
 	 * @param listeFicheFrais
 	 */
-	public void setLesFicheFrais(List<FicheFrais> listeFicheFrais) {
+	public void setLesFichesFrais(List<FicheFrais> listeFicheFrais) {
 		this.listeFicheFrais = listeFicheFrais;
 	}
 	
@@ -311,11 +311,12 @@ public class Utilisateur {
 		FicheFrais resultat = null;
 		int index = 0;
 		boolean trouve = false;
-		while(trouve == false && index < listeFicheFrais.size()) {
+		while((trouve == false) && (index < listeFicheFrais.size())) {
 			if(mois == listeFicheFrais.get(index).getMois()) {
 				resultat = listeFicheFrais.get(index);
+				trouve = true;
 			}
-			index = index++;
+			index = index + 1;
 		}
 		return resultat;
 	}
@@ -327,34 +328,7 @@ public class Utilisateur {
 	public int getNbFicheFrais() {
 		return listeFicheFrais.size();
 	}
-	
-	/**
-	 * Générateur automatique du login d'un objet Utilisateur
-	 * @return login
-	 */
-	private String genererLogin(String nom, String prenom) {
-		String login = prenom.substring(0, 0) + nom;
-		return login;
-	}
-	
-	/**
-	 * Générateur automatique du mot de passe d'un objet Utilisateur
-	 * @return mdp
-	 */
-	private String genererMdp(String nom, String prenom, String dateEmbauche) {
-		String mdp = nom.substring(0, 3) + prenom.substring(0, 0) + dateEmbauche.substring(0, 3);
-		return mdp;
-	}
-	
-	/**
-	 * Générateur automatique de l'adresse mail d'un objet Utilisateur
-	 * @return mail
-	 */
-	private String genererMail(String nom, String prenom) {
-		String mail = nom + "." + prenom + "@gsb.fr";
-		return mail;
-	}
-	
+
 	/**
 	 * Méthode toString de la classe Utilisateur
 	 */
