@@ -304,7 +304,7 @@ public class Utilisateur {
 	
 	/**
 	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
-	 * @param idUtilisateur
+	 * @param mois
 	 * @return resultat
 	 */
 	public FicheFrais getUneFicheFrais(String mois) {
