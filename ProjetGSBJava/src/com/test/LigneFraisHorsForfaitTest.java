@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import com.metier.FicheFrais;
 import com.metier.FraisForfait;
-import com.metier.LigneFraisForfait;
 import com.metier.LigneFraisHorsForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
