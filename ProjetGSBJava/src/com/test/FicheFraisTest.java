@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import com.metier.FicheFrais;
 import com.metier.FraisForfait;
+import com.metier.LigneFraisForfait;
+import com.metier.LigneFraisHorsForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
 
@@ -17,7 +19,16 @@ public class FicheFraisTest {
 
 	Utilisateur utilisateur, utilisateur2;
 	Region region;
-	FicheFrais fiche1;
+	
+	FicheFrais fiche;
+	
+	FraisForfait f1, f2, f3, f4;
+	
+	LigneFraisForfait fraisF1, fraisF2, fraisF3, fraisF4, fraisF5, fraisF6, fraisF7, fraisF8;
+	LigneFraisHorsForfait fraisHF1, fraisHF2, fraisHF3, fraisHF4, fraisHF5;
+	
+	ArrayList<LigneFraisForfait> lesFraisForfait1, lesFraisForfait2;
+	ArrayList<LigneFraisHorsForfait> lesFraisHorsForfait1, lesFraisHorsForfait2;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -25,110 +36,184 @@ public class FicheFraisTest {
 		utilisateur = new Utilisateur("Secrétaire", "S","Andre", "David", "27/03/2015", region);
 		utilisateur2 = new Utilisateur("Secrétaire", "S","Smith", "John", "28/03/2015", region);
 		
-		fiche1 = new FicheFrais("201503", utilisateur);
-		ArrayList<FraisForfait> lesFraisForfait = new ArrayList<FraisForfait>();
+		fiche = new FicheFrais("201503", utilisateur);
 		
-		/*FraisForfait fraisF1;
-		FraisForfait fraisF1;
-		FraisForfait fraisF1;
-		FraisForfait fraisF1;
+		f1 = new FraisForfait("KM", "Frais Kilométrique", 0.62);
+		f2 = new FraisForfait("ETP", "Forfait Etape", 110);
+		f3 = new FraisForfait("NUI", "Nuitée Hôtel", 80);
+		f4 = new FraisForfait("REP", "Repas Restaurant", 25);
+
+		fraisF1 = new LigneFraisForfait("KM", 511, fiche, f1);
+		fraisF2 = new LigneFraisForfait("ETP", 6, fiche, f2);
+		fraisF3 = new LigneFraisForfait("NUI", 8, fiche, f3);
+		fraisF4 = new LigneFraisForfait("REP", 11, fiche, f4);
+		fraisF5 = new LigneFraisForfait("KM", 701, fiche, f1);
+		fraisF6 = new LigneFraisForfait("ETP", 5, fiche, f2);
+		fraisF7 = new LigneFraisForfait("NUI", 10, fiche, f3);
+		fraisF8 = new LigneFraisForfait("REP", 15, fiche, f4);
 		
-		FraisHorsForfait fraisF1;*/
+		fraisHF1 = new LigneFraisHorsForfait(1, "Restaurant avec practicien", "2015/03/04", 50, fiche);
+		fraisHF2 = new LigneFraisHorsForfait(1, "parking", "2015/03/04", 2.50, fiche);
+		fraisHF3 = new LigneFraisHorsForfait(1, "Voyage SNCF", "2015/03/02", 31, fiche);
+		fraisHF4 = new LigneFraisHorsForfait(1, "Locationn salle conférence", "2015/02/17", 50, fiche);
+		fraisHF5 = new LigneFraisHorsForfait(1, "Dinner avec médecin", "2015/02/24", 50, fiche);
+		
+		lesFraisForfait1 = new ArrayList<LigneFraisForfait>();
+		lesFraisForfait2 = new ArrayList<LigneFraisForfait>();
+		
+		lesFraisHorsForfait1 = new ArrayList<LigneFraisHorsForfait>();
+		lesFraisHorsForfait2 = new ArrayList<LigneFraisHorsForfait>();
+		
+		lesFraisForfait1.add(fraisF1);
+		lesFraisForfait1.add(fraisF2);
+		lesFraisForfait2.add(fraisF3);
+		lesFraisForfait2.add(fraisF4);
+		
+		lesFraisHorsForfait1.add(fraisHF1);
+		lesFraisHorsForfait1.add(fraisHF2);
+		lesFraisHorsForfait2.add(fraisHF3);
+		lesFraisHorsForfait2.add(fraisHF4);
+		lesFraisHorsForfait2.add(fraisHF5);
+		
+		fiche.setListeFraisForfait(lesFraisForfait1);
+		fiche.setListeFraisHorsForfait(lesFraisHorsForfait1);
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		fiche1 = null;
+		region = null;
+		utilisateur = null;
+		utilisateur2 = null;
+		
+		fiche = null;
+		f1 = null;
+		f2 = null;
+
+		lesFraisForfait1 = null;
+		lesFraisForfait2 = null;
+		lesFraisHorsForfait1 = null;
+		lesFraisHorsForfait2 = null;
+		
+		fraisF1 = null;
+		fraisF2 = null;
+		fraisF3 = null;
+		fraisF4 = null;
+		
+		fraisHF1 = null;
+		fraisHF2 = null;
+		fraisHF3 = null;
+		fraisHF4 = null;
+		fraisHF5 = null;
 	}
 
 	//test de l'instanciation
 	@Test
 	public void testFicheFrais() {
-		assertNotNull("L'instance est créée ", fiche1);
+		assertNotNull("L'instance est créée ", fiche);
 	}
 	
 	//test accesseur mois
 	@Test
 	public void testGetMois() {
-		assertEquals("Test accesseur mois", fiche1.getMois(), "201503");
+		assertEquals("Test accesseur mois", fiche.getMois(), "201503");
 	}
 	
 	//test mutateur mois (pour hibernate)
 	@Test
 	public void testSetMois() {
-		fiche1.setMois("201504");
-		assertEquals("Test accesseur mois", fiche1.getMois(), "201504");
+		fiche.setMois("201504");
+		assertEquals("Test accesseur mois", fiche.getMois(), "201504");
 	}
 	
 	//test accesseur idVisiteur
 	@Test
 	public void testGetUtilisateur() {
-		assertEquals("Test accesseur idVisiteur", fiche1.getUtilisateur(), utilisateur);
+		assertEquals("Test accesseur idVisiteur", fiche.getUtilisateur(), utilisateur);
 	}
 	
 	//test mutateur idVisiteur (pour hibernate)
 	@Test
 	public void testSetUtilisateur() {
-		fiche1.setUtilisateur(utilisateur2);
-		assertEquals("Test accesseur idVisiteur", fiche1.getUtilisateur(), utilisateur2);
+		fiche.setUtilisateur(utilisateur2);
+		assertEquals("Test accesseur idVisiteur", fiche.getUtilisateur(), utilisateur2);
 	}
 	
 	//test accesseur nbJustificatifs
 	@Test
 	public void testGetNbJustificatifs() {
-		assertEquals("Test accesseur nbJustificatifs", fiche1.getNbJustificatifs(), 0);
+		assertEquals("Test accesseur nbJustificatifs", fiche.getNbJustificatifs(), 0);
 	}
 	
 	//test mutateur nbJustificatifs
 	@Test
 	public void testSetNbJustificatifs() {
-		fiche1.setNbJustificatifs(2);
-		assertEquals("Test accesseur nbJustificatifs", fiche1.getNbJustificatifs(), 2);
+		fiche.setNbJustificatifs(2);
+		assertEquals("Test accesseur nbJustificatifs", fiche.getNbJustificatifs(), 2);
 	}
 	
 	//test accesseur montantValide
 	@Test
 	public void testGetMontantValide() {
-		assertEquals("Test accesseur montantValide", fiche1.getMontantValide(), 0, 1000000);
+		assertEquals("Test accesseur montantValide", fiche.getMontantValide(), 0, 1000000);
 	}
 	
 	//test mutateur montantValide
 	@Test
 	public void testSetMontantValide() {
-		fiche1.setMontantValide(1000);
-		assertEquals("Test accesseur montantValide", fiche1.getMontantValide(), 1000, 0);
+		fiche.setMontantValide(1000);
+		assertEquals("Test accesseur montantValide", fiche.getMontantValide(), 1000, 0);
 	}
 	
 	//test accesseur dateModif
 	@Test
 	public void testGetDateModif() {
-		assertEquals("Test accesseur montantValide", fiche1.getDateModif(), null);
+		assertEquals("Test accesseur montantValide", fiche.getDateModif(), null);
 	}
 	
 	//test mutateur montantValide
 	@Test
 	public void testSetDateModif() {
-		fiche1.setDateModif("30/03/2015");
-		assertEquals("Test accesseur montantValide", fiche1.getDateModif(), "30/03/2015");
+		fiche.setDateModif("30/03/2015");
+		assertEquals("Test accesseur montantValide", fiche.getDateModif(), "30/03/2015");
 	}
 	
 	//test accesseur etat
 	@Test
 	public void testGetEtat() {
-		assertEquals("Test accesseur montantValide", fiche1.getEtat(), "CR");
+		assertEquals("Test accesseur montantValide", fiche.getEtat(), "CR");
 	}
 	
 	//test mutateur etat
 	@Test
 	public void testSetEtat() {
-		fiche1.setEtat("CL");
-		assertEquals("Test accesseur montantValide", fiche1.getEtat(), "CL");
+		fiche.setEtat("CL");
+		assertEquals("Test accesseur montantValide", fiche.getEtat(), "CL");
 	}
 	
 	// test accesseur liste LigneFraisForfait
 	@Test
 	public void testGetListeFraisForfait() {
-		
+		assertEquals("Test accesseur ListeFraisForfait", fiche.getListeFraisForfait() , lesFraisForfait1);
 	}
 	
+	// test mutateur liste LigneFraisForfait
+	@Test
+	public void testSetListeFraisForfait() {
+		fiche.setListeFraisForfait(lesFraisForfait2);
+		assertEquals("Test mutateur ListeFraisForfait", fiche.getListeFraisForfait() , lesFraisForfait2);
+	}
+	
+	// test accesseur liste LigneFraisHorsForfait
+	@Test
+	public void testGetListeFraisHorsForfait() {
+		assertEquals("Test accesseur ListeFraisHorsForfait", fiche.getListeFraisHorsForfait() , lesFraisHorsForfait1);
+	}
+	
+	// test mutateur liste LigneFraisHorsForfait
+	@Test
+	public void testSetListeFraisHorsForfait() {
+		fiche.setListeFraisHorsForfait(lesFraisHorsForfait2);
+		assertEquals("Test mutateur ListeFraisHorsForfait", fiche.getListeFraisHorsForfait() , lesFraisHorsForfait2);
+	}
 }

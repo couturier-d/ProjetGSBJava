@@ -10,7 +10,7 @@ public class LigneFraisHorsForfait {
 	private int idLigneFraisHorsForfait;
 	private String libelleFraisHorsForfait;
 	private String date;
-	private int montant;
+	private double montant;
 	private FicheFrais ficheFrais;
 	
 	/**
@@ -21,7 +21,7 @@ public class LigneFraisHorsForfait {
 	 * @param unMontant
 	 * @param laFicheFrais
 	 */
-	public LigneFraisHorsForfait(int unIdFraisHorsForfait, String unLibelleFraisHorsForfait, String uneDate, int unMontant, FicheFrais laFicheFrais) {
+	public LigneFraisHorsForfait(int unIdFraisHorsForfait, String unLibelleFraisHorsForfait, String uneDate, double unMontant, FicheFrais laFicheFrais) {
 		super();
 		this.idLigneFraisHorsForfait = unIdFraisHorsForfait;
 		this.libelleFraisHorsForfait = unLibelleFraisHorsForfait;
@@ -82,7 +82,7 @@ public class LigneFraisHorsForfait {
 	 * Accesseur du montant de l'objet LigneFraisHorsForfait
 	 * @return montant
 	 */
-	public int getMontant() {
+	public double getMontant() {
 		return montant;
 	}
 
@@ -90,7 +90,7 @@ public class LigneFraisHorsForfait {
 	 * Mutateur du montant de l'objet LigneFraisHorsForfait
 	 * @param montant
 	 */
-	public void setMontant(int montant) {
+	public void setMontant(double montant) {
 		this.montant = montant;
 	}
 
