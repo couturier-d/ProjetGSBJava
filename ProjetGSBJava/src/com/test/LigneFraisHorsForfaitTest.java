@@ -108,14 +108,14 @@ public class LigneFraisHorsForfaitTest {
 	//test accesseur montant
 	@Test
 	public void testGetMontantFraisForfait() {
-		assertEquals("Test accesseur quantite", ligneFrais.getMontant() , 50);
+		assertEquals("Test accesseur quantite", ligneFrais.getMontant() , 50, 0.0);
 	}
 	
 	//test mutateur montant
 	@Test
 	public void testSetMontantFraisForfait() {
 		ligneFrais.setMontant(60);
-		assertEquals("Test mutateur quantite", ligneFrais.getMontant(), 60);
+		assertEquals("Test mutateur quantite", ligneFrais.getMontant(), 60, 0.0);
 	}
 	
 }
