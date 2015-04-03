@@ -22,7 +22,7 @@ public class FicheFrais {
 	/**
 	 * Constructeur ficheFrais
 	 * @param unMois
-	 * @param unIdVisiteur
+	 * @param unUtilisateur
 	 */
 	public FicheFrais(String unMois, Utilisateur unUtilisateur) {
 		this.mois = unMois;
@@ -61,7 +61,7 @@ public class FicheFrais {
 	
 	/**
 	 * mutateur utilisateur
-	 * @param utilisateur
+	 * @param unUtilisateur
 	 */
 	public void setUtilisateur(Utilisateur unUtilisateur) {
 		this.utilisateur = unUtilisateur;

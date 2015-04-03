@@ -36,7 +36,7 @@ public class LigneFraisForfait {
 
 	/**
 	 * mutateur mois (uniquement pour hibernate)
-	 * @param mois
+	 * @param idFraisForfait
 	 */
 	public void setIdFraisForfait(String idFraisForfait) {
 		this.idFraisForfait = idFraisForfait;
