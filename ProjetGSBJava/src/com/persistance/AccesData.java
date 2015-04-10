@@ -12,22 +12,22 @@ public class AccesData {
 	private static Transaction trans = session.beginTransaction();
 	// accesseurs sur listes d'objets
 	public static List<FicheFrais> getListeFicheFrais() 	{
-		return session.createQuery("from fichefrais").list();
+		return session.createQuery("from FicheFrais").list();
 					}
 	public static List<FraisForfait> getListeFraisForfait() 	{
-		return session.createQuery("from fraisforfait").list();
+		return session.createQuery("from FraisForfait").list();
 	}
-	public static List<LigneFraisForfait> getListeLigneFraisForfait() 	{
-		return session.createQuery("from lignefraisforfait").list();
-	}
+//	public static List<LigneFraisForfait> getListeLigneFraisForfait() 	{
+//		return session.createQuery("from lignefraisforfait").list();
+//	}
 	public static List<LigneFraisHorsForfait> getListeLigneFraisHorsForfait() 	{
-		return session.createQuery("from lignefraishorsforfait").list();
+		return session.createQuery("from LigneFraisHorsForfait").list();
 					}
 	public static List<Region> getListeRegion() 	{
-		return session.createQuery("from region").list();
+		return session.createQuery("from Region").list();
 	}
 	public static List<Utilisateur> getListeUtilisateur() 	{
-		return session.createQuery("from utilisateur").list();
+		return session.createQuery("from Utilisateur").list();
 	}
 	public static FicheFrais getFicheFrais(int idFicheFrais) 	{
 		return (FicheFrais) session.get(FicheFrais.class, idFicheFrais);

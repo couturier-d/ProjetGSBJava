@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Region {
 	
 	@Id
-	@GeneratedValue
+	
 	@Column(name="idRegion")
 	private String idRegion;
 	
@@ -41,7 +41,11 @@ public class Region {
 		super();
 		this.idRegion = unIdRegion;
 		this.nomRegion = unNomRegion;
-		this.listeUtilisateur = new ArrayList<Utilisateur>();
+//		this.listeUtilisateur = new ArrayList<Utilisateur>();
+	}
+
+	public Region() {
+		super();
 	}
 
 	/**

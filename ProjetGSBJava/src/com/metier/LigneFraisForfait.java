@@ -26,13 +26,14 @@ import org.hibernate.annotations.Columns;
 public class LigneFraisForfait {
 	
 	@Id
-	@Columns(columns = {@Column(name = "idVisiteur",insertable=false, updatable=false),
-	@Column(name = "mois",insertable=false, updatable=false),
-	@Column(name = "id",insertable=false, updatable=false)
+	@Columns(columns = {
+			@Column(name = "idVisiteur",insertable=false, updatable=false),
+			@Column(name = "mois",insertable=false, updatable=false),
+			@Column(name = "id",insertable=false, updatable=false)
 	})
 	private String idVisiteur;
-	private String idMois;
-	private String idFraisForfait; // A verifier !
+	private String mois;
+	private String idFraisForfait;
 	
 	@Column(name="quantite")
 	private int quantite;

@@ -13,9 +13,9 @@
 		<!--  Paramètres de connexion à la base de données -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
-		<property name="hibernate.connection.url">jdbc:mysql://10.29.133.51/GSB</property>
-		<property name="hibernate.connection.username">phdc_mysql</property>
-		<property name="hibernate.connection.password">sqlio2</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/GSB</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
 
 		<!-- Comportement pour la conservation des tables -->
 		<property name="hbm2ddl.auto">validate</property>
@@ -23,9 +23,11 @@
 		<!-- Fichiers à mapper -->
 		<mapping class="com.metier.Utilisateur" />
 		<mapping class="com.metier.Region" />
-		<mapping class="com.metier.FicheFrais" />
+		<!-- <mapping class="com.metier.FicheFrais" />
+		<mapping class="com.metier.FicheFraisPK" />
 		<mapping class="com.metier.FraisForfait" />
 		<mapping class="com.metier.LigneFraisForfait" />
-		<mapping class="com.metier.LigneFraisHorsForfait" />
-		</session-factory>
+		<mapping class="com.metier.LigneFraisForfaitPK" />
+		<mapping class="com.metier.LigneFraisHorsForfait" /> -->
+	</session-factory>
 </hibernate-configuration>

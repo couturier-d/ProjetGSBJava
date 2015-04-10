@@ -23,10 +23,13 @@ import javax.persistence.Table;
 public class Utilisateur {
 	
 	@Id
-	@GeneratedValue
 	@Column(name="id")
 	private String idUtilisateur;
 	
+	public Utilisateur() {
+		super();
+	}
+
 	@ManyToOne
 	@JoinColumn(name="idTypeUtilisateur")
 	private String idTypeUtilisateur;
@@ -68,11 +71,11 @@ public class Utilisateur {
 	@JoinColumn(name="idRegion")
 	private Region region;
 	
-	@OneToMany
-	@JoinColumns({
-		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
-		@JoinColumn(name="mois", insertable=false, updatable=false)})
-	private List<FicheFrais> listeFicheFrais;
+//	@OneToMany
+//	@JoinColumns({
+//		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
+//		@JoinColumn(name="mois", insertable=false, updatable=false)})
+//	private List<FicheFrais> listeFicheFrais;
 
 	/**
 	 * Constructeur de la classe Utilisateur
@@ -98,7 +101,7 @@ public class Utilisateur {
 		this.numeroFixe = null;
 		this.adresseMail = null;
 		this.region = uneRegion;
-		this.listeFicheFrais = new ArrayList<FicheFrais>();
+//		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
 
 	/**
@@ -329,53 +332,53 @@ public class Utilisateur {
 	 * Accesseur de la liste de fiches de frais de l'objet Utilisateur
 	 * @return listeFicheFrais
 	 */
-	public List<FicheFrais> getLesFichesFrais() {
-		return listeFicheFrais;
-	}
-	
-	/**
-	 * Mutateur de la liste de fiches de frais de l'objet Utilisateur
-	 * @param listeFicheFrais
-	 */
-	public void setLesFichesFrais(List<FicheFrais> listeFicheFrais) {
-		this.listeFicheFrais = listeFicheFrais;
-	}
-	
-	/**
-	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
-	 * @param index
-	 * @return listeFicheFrais.get(index)
-	 */
-	public FicheFrais getUneFicheFrais(int index) {
-		return listeFicheFrais.get(index);
-	}
-	
-	/**
-	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
-	 * @param mois
-	 * @return resultat
-	 */
-	public FicheFrais getUneFicheFrais(String mois) {
-		FicheFrais resultat = null;
-		int index = 0;
-		boolean trouve = false;
-		while((trouve == false) && (index < listeFicheFrais.size())) {
-			if(mois == listeFicheFrais.get(index).getMois()) {
-				resultat = listeFicheFrais.get(index);
-				trouve = true;
-			}
-			index = index + 1;
-		}
-		return resultat;
-	}
-
-	/**
-	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
-	 * @return taille
-	 */
-	public int getNbFicheFrais() {
-		return listeFicheFrais.size();
-	}
+//	public List<FicheFrais> getLesFichesFrais() {
+//		return listeFicheFrais;
+//	}
+//	
+//	/**
+//	 * Mutateur de la liste de fiches de frais de l'objet Utilisateur
+//	 * @param listeFicheFrais
+//	 */
+//	public void setLesFichesFrais(List<FicheFrais> listeFicheFrais) {
+//		this.listeFicheFrais = listeFicheFrais;
+//	}
+//	
+//	/**
+//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
+//	 * @param index
+//	 * @return listeFicheFrais.get(index)
+//	 */
+//	public FicheFrais getUneFicheFrais(int index) {
+//		return listeFicheFrais.get(index);
+//	}
+//	
+//	/**
+//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
+//	 * @param mois
+//	 * @return resultat
+//	 */
+//	public FicheFrais getUneFicheFrais(String mois) {
+//		FicheFrais resultat = null;
+//		int index = 0;
+//		boolean trouve = false;
+//		while((trouve == false) && (index < listeFicheFrais.size())) {
+//			if(mois == listeFicheFrais.get(index).getMois()) {
+//				resultat = listeFicheFrais.get(index);
+//				trouve = true;
+//			}
+//			index = index + 1;
+//		}
+//		return resultat;
+//	}
+//
+//	/**
+//	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
+//	 * @return taille
+//	 */
+//	public int getNbFicheFrais() {
+//		return listeFicheFrais.size();
+//	}
 
 	/**
 	 * Méthode toString de la classe Utilisateur

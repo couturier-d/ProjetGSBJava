@@ -19,5 +19,21 @@
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.6.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/hibernate-validator.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="Z:/workspace/ProjetGSBJava/ProjetGSBJava/lib/slf4j-simple-1.5.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
