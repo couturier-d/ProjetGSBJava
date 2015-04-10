@@ -69,10 +69,9 @@ public class Utilisateur {
 	private Region region;
 	
 	@OneToMany
-	@JoinColumns(columns = {
-		@Column(name = "idVisiteur",insertable=false, updatable=false),
-		@Column(name = "mois",insertable=false, updatable=false)
-	})
+	@JoinColumns({
+		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
+		@JoinColumn(name="mois", insertable=false, updatable=false)})
 	private List<FicheFrais> listeFicheFrais;
 
 	/**

@@ -1,8 +1,14 @@
 package com.metier;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -11,16 +17,28 @@ import javax.persistence.Table;
  * @author halleguen-py
  */
 @Entity
-@Table (name="fraisforfait")
-@IdClass(LigneFraisHorsForfaitPK.class)
-@Embeddable
+@Table (name="lignefraisforfait")
 public class LigneFraisHorsForfait {
 
+	@Id
+	@GeneratedValue
+	@Column(name="id")
 	private int idLigneFraisHorsForfait;
-	private String libelleFraisHorsForfait;
-	private String date;
-	private double montant;
+
+	@ManyToOne
+	@JoinColumns({
+		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
+		@JoinColumn(name="mois", insertable=false, updatable=false)})
 	private FicheFrais ficheFrais;
+	
+	@Column(name="libelle")
+	private String libelleFraisHorsForfait;
+	
+	@Column(name="date")
+	private String date;
+	
+	@Column(name="montant")
+	private double montant;
 	
 	/**
 	 * Constructeur de la classe LigneFraisHorsForfait

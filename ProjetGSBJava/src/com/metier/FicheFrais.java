@@ -4,10 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Columns;
 
 /**
  * Classe FicheFrais
@@ -20,14 +28,40 @@ import javax.persistence.Table;
 @Embeddable
 public class FicheFrais implements Serializable {
 
-	
+	@Id
+	@Columns(columns = {@Column(name = "idVisiteur",insertable=false, updatable=false),
+	@Column(name = "mois",insertable=false, updatable=false)
+	})
+	private String idVisiteur;
 	private String mois;
+	
+	@ManyToOne
+	@JoinColumn(name="idVisiteur",insertable=false, updatable=false)
 	private Utilisateur utilisateur;
+	
+	@Column(name="nbJustificatifs")
 	private int nbJustificatifs;
+	
+	@Column(name="montantValide")
 	private double montantValide;
+	
+	@Column(name="dateModif")
 	private String dateModif;
+	
+	@OneToMany
+	@JoinColumns({
+		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
+		@JoinColumn(name="mois", insertable=false, updatable=false)})
 	private List <LigneFraisForfait> listeFraisForfait;
+	
+	@OneToMany
+	@JoinColumns({
+		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
+		@JoinColumn(name="mois", insertable=false, updatable=false)})
 	private List <LigneFraisHorsForfait> listeFraisHorsForfait;
+	
+	@ManyToOne
+	@JoinColumn(name="idEtat")
 	private String etat;
 	
 	/**
@@ -62,6 +96,22 @@ public class FicheFrais implements Serializable {
 		this.mois = mois;
 	}
 
+	/**
+	 * accesseur idVisiteur
+	 * @return idvisiteur
+	 */
+	public String getIdVisiteur() {
+		return idVisiteur;
+	}
+	
+	/**
+	 * mutateur idVisiteur (uniquement pour hibernate)
+	 * @param idVisiteur
+	 */
+	public void setIdVisiteur(String idVisiteur) {
+		this.idVisiteur = idVisiteur;
+	}
+	
 	/**
 	 * accesseur utilisateur
 	 * @return utilisateur
