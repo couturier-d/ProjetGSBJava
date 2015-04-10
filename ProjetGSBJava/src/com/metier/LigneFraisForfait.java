@@ -1,9 +1,18 @@
 package com.metier;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Columns;
 
 /**
  * Classe LigneFraisForfait
@@ -11,14 +20,32 @@ import javax.persistence.Table;
  * @author couturier-d
  */
 @Entity
-@Table (name="fraisforfait")
+@Table (name="lignefraisforfait")
 @IdClass(LigneFraisForfaitPK.class)
 @Embeddable
 public class LigneFraisForfait {
 	
+	@Id
+	@Columns(columns = {@Column(name = "idVisiteur",insertable=false, updatable=false),
+	@Column(name = "mois",insertable=false, updatable=false),
+	@Column(name = "id",insertable=false, updatable=false)
+	})
+	private String idVisiteur;
+	private String idMois;
 	private String idFraisForfait; // A verifier !
+	
+	@Column(name="quantite")
 	private int quantite;
+	
+	@ManyToOne
+	@JoinColumns({
+		@JoinColumn(name="idVisiteur"),
+		@JoinColumn(name="mois")
+	})
 	private FicheFrais ficheFrais;
+	
+	@ManyToOne
+	@JoinColumn(name="id")
 	private FraisForfait fraisForfait;
 	
 	/**

@@ -1,7 +1,10 @@
 package com.metier;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
@@ -11,9 +14,19 @@ import javax.persistence.Table;
  * @author couturier-d
  *
  */
+@Entity
+@Table (name="fraisforfait")
 public class FraisForfait {
+	
+	@Id
+	@GeneratedValue
+	@Column(name="id")
 	private String idFraisForfait;
+	
+	@Column(name="libelle")
 	private String libelleFraisForfait;
+	
+	@Column(name="montant")
 	private double montantFraisForfait;
 
 	/**
