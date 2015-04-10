@@ -1,15 +1,26 @@
 package com.metier;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 /**
  * Classe FicheFrais
  * Gère les fiches de frais des utilisateurs
  * @author couturier-d
  */
-public class FicheFrais {
+@Entity
+@Table (name="fichefrais")
+@IdClass(FicheFraisPK.class)
+@Embeddable
+public class FicheFrais implements Serializable {
 
+	
 	private String mois;
 	private Utilisateur utilisateur;
 	private int nbJustificatifs;

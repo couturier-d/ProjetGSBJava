@@ -3,27 +3,76 @@ package com.metier;
 import java.util.List;
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * Classe Utilisateur
  * Gère les utilisateurs 
  * @author halleguen-py
  */
+@Entity
+@Table (name="utilisateur")
 public class Utilisateur {
 	
+	@Id
+	@GeneratedValue
+	@Column(name="id")
 	private String idUtilisateur;
+	
+	@ManyToOne
+	@JoinColumn(name="idTypeUtilisateur")
 	private String idTypeUtilisateur;
+	
+	@Column(name="nom")
 	private String nom;
+	
+	@Column(name="prenom")
 	private String prenom;
+	
+	@Column(name="login")
 	private String login;
+	
+	@Column(name="mdp")
 	private String motDePasse;
+	
+	@Column(name="adresse")
 	private String adresse;
+	
+	@Column(name="cp")
 	private String codePostal;
+	
+	@Column(name="ville")
 	private String ville;
+	
+	@Column(name="dateEmbauche")
 	private String dateEmbauche;
+	
+	@Column(name="numeroPortable")
 	private String numeroPortable;
+	
+	@Column(name="numeroFixe")
 	private String numeroFixe;
+	
+	@Column(name="adresseMail")
 	private String adresseMail;
+	
+	@ManyToOne
+	@JoinColumn(name="idRegion")
 	private Region region;
+	
+	@OneToMany
+	@JoinColumns(columns = {
+		@Column(name = "idVisiteur",insertable=false, updatable=false),
+		@Column(name = "mois",insertable=false, updatable=false)
+	})
 	private List<FicheFrais> listeFicheFrais;
 
 	/**

@@ -1,10 +1,19 @@
 package com.metier;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
 /**
  * Classe LigneFraisForfait
  * Gère les ligne de frais frofaitisés
  * @author couturier-d
  */
+@Entity
+@Table (name="fraisforfait")
+@IdClass(LigneFraisForfaitPK.class)
+@Embeddable
 public class LigneFraisForfait {
 	
 	private String idFraisForfait; // A verifier !

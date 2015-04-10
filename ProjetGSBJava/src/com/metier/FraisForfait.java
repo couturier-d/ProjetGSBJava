@@ -1,5 +1,10 @@
 package com.metier;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
 /**
  * Classe FraisForfait
  * Gère les types de Frais forfaitisés

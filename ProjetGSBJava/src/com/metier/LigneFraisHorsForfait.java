@@ -1,10 +1,19 @@
 package com.metier;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
 /**
  * Classe LigneFraisHorsForfait
  * Gère l'ensemble des frais non forfaitisés
  * @author halleguen-py
  */
+@Entity
+@Table (name="fraisforfait")
+@IdClass(LigneFraisHorsForfaitPK.class)
+@Embeddable
 public class LigneFraisHorsForfait {
 
 	private int idLigneFraisHorsForfait;
