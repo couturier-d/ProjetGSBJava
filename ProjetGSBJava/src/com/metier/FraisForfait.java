@@ -19,15 +19,21 @@ import javax.persistence.Table;
 public class FraisForfait {
 	
 	@Id
-	@GeneratedValue
 	@Column(name="id")
 	private String idFraisForfait;
 	
 	@Column(name="libelle")
 	private String libelleFraisForfait;
 	
-	@Column(name="montant")
+	@Column(name="montant", columnDefinition="Decimal(10,2)")
 	private double montantFraisForfait;
+	
+	/**
+	 * Constructeur vide pour hibernate
+	 */
+	public FraisForfait() {
+		super();
+	}
 
 	/**
 	 * Constructeur FraisForfait

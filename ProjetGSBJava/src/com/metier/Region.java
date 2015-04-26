@@ -21,11 +21,10 @@ import javax.persistence.Table;
 public class Region {
 	
 	@Id
-	
 	@Column(name="idRegion")
 	private String idRegion;
 	
-	@Column(name="nomRegion")
+	@Column(name="nom")
 	private String nomRegion;
 	
 	@OneToMany
@@ -43,7 +42,10 @@ public class Region {
 		this.nomRegion = unNomRegion;
 //		this.listeUtilisateur = new ArrayList<Utilisateur>();
 	}
-
+	
+	/**
+	 * Constructeur vide pour hibernate
+	 */
 	public Region() {
 		super();
 	}

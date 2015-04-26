@@ -3,6 +3,7 @@ package com.test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
@@ -52,11 +53,13 @@ public class FicheFraisTest {
 		fraisF7 = new LigneFraisForfait("NUI", 10, fiche, f3);
 		fraisF8 = new LigneFraisForfait("REP", 15, fiche, f4);
 		
-		fraisHF1 = new LigneFraisHorsForfait(1, "Restaurant avec practicien", "2015/03/04", 50, fiche);
-		fraisHF2 = new LigneFraisHorsForfait(1, "parking", "2015/03/04", 2.50, fiche);
-		fraisHF3 = new LigneFraisHorsForfait(1, "Voyage SNCF", "2015/03/02", 31, fiche);
-		fraisHF4 = new LigneFraisHorsForfait(1, "Locationn salle conférence", "2015/02/17", 50, fiche);
-		fraisHF5 = new LigneFraisHorsForfait(1, "Dinner avec médecin", "2015/02/24", 50, fiche);
+		Date date = new Date();
+		
+		fraisHF1 = new LigneFraisHorsForfait(1, "Restaurant avec practicien", date, 50.0, fiche);
+		fraisHF2 = new LigneFraisHorsForfait(1, "parking", date, 2.50, fiche);
+		fraisHF3 = new LigneFraisHorsForfait(1, "Voyage SNCF", date, 31, fiche);
+		fraisHF4 = new LigneFraisHorsForfait(1, "Locationn salle conférence", date, 50.0, fiche);
+		fraisHF5 = new LigneFraisHorsForfait(1, "Dinner avec médecin", date, 50.0, fiche);
 		
 		lesFraisForfait1 = new ArrayList<LigneFraisForfait>();
 		lesFraisForfait2 = new ArrayList<LigneFraisForfait>();
@@ -174,7 +177,8 @@ public class FicheFraisTest {
 	//test mutateur montantValide
 	@Test
 	public void testSetDateModif() {
-		fiche.setDateModif("30/03/2015");
+		Date date2 = new Date();
+		fiche.setDateModif(date2);
 		assertEquals("Test accesseur montantValide", fiche.getDateModif(), "30/03/2015");
 	}
 	

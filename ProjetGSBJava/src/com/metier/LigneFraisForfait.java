@@ -29,7 +29,7 @@ public class LigneFraisForfait {
 	@Columns(columns = {
 			@Column(name = "idVisiteur",insertable=false, updatable=false),
 			@Column(name = "mois",insertable=false, updatable=false),
-			@Column(name = "id",insertable=false, updatable=false)
+			@Column(name = "idFraisForfait",insertable=false, updatable=false)
 	})
 	private String idVisiteur;
 	private String mois;
@@ -49,6 +49,12 @@ public class LigneFraisForfait {
 	@JoinColumn(name="id")
 	private FraisForfait fraisForfait;
 	
+	/**
+	 * Constructeur vide pour hibernate
+	 */
+	public LigneFraisForfait() {
+		super();
+	}
 	/**
 	 * Constructeur LigneFraisForfait
 	 * @param idFraisForfait

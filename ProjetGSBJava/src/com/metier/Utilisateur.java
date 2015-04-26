@@ -1,5 +1,6 @@
 package com.metier;
 
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -25,13 +26,8 @@ public class Utilisateur {
 	@Id
 	@Column(name="id")
 	private String idUtilisateur;
-	
-	public Utilisateur() {
-		super();
-	}
 
-	@ManyToOne
-	@JoinColumn(name="idTypeUtilisateur")
+	@Column(name="idType")
 	private String idTypeUtilisateur;
 	
 	@Column(name="nom")
@@ -56,7 +52,7 @@ public class Utilisateur {
 	private String ville;
 	
 	@Column(name="dateEmbauche")
-	private String dateEmbauche;
+	private Date dateEmbauche;
 	
 	@Column(name="numeroPortable")
 	private String numeroPortable;
@@ -71,12 +67,19 @@ public class Utilisateur {
 	@JoinColumn(name="idRegion")
 	private Region region;
 	
-//	@OneToMany
-//	@JoinColumns({
-//		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
-//		@JoinColumn(name="mois", insertable=false, updatable=false)})
-//	private List<FicheFrais> listeFicheFrais;
+	@OneToMany
+	@JoinColumns({
+		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
+		@JoinColumn(name="mois", insertable=false, updatable=false)})
+	private List<FicheFrais> listeFicheFrais;
 
+	/**
+	 * Constructeur vide pour hibernate
+	 */
+	public Utilisateur() {
+		super();
+	}
+	
 	/**
 	 * Constructeur de la classe Utilisateur
 	 * @param unIdTypeUtilisateur
@@ -85,7 +88,7 @@ public class Utilisateur {
 	 * @param uneDateEmbauche
 	 * @param uneRegion
 	 */
-	public Utilisateur(String unIdUtilisateur, String unIdTypeUtilisateur, String unNom, String unPrenom, String uneDateEmbauche, Region uneRegion) {
+	public Utilisateur(String unIdUtilisateur, String unIdTypeUtilisateur, String unNom, String unPrenom, Date uneDateEmbauche, Region uneRegion) {
 		super();
 		this.idUtilisateur = unIdUtilisateur;
 		this.idTypeUtilisateur = unIdTypeUtilisateur;
@@ -101,7 +104,7 @@ public class Utilisateur {
 		this.numeroFixe = null;
 		this.adresseMail = null;
 		this.region = uneRegion;
-//		this.listeFicheFrais = new ArrayList<FicheFrais>();
+		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
 
 	/**
@@ -252,7 +255,7 @@ public class Utilisateur {
 	 * Accesseur de la date d'embauche de l'objet Utilisateur
 	 * @return dateEmbauche
 	 */
-	public String getDateEmbauche() {
+	public Date getDateEmbauche() {
 		return dateEmbauche;
 	}
 
@@ -260,7 +263,7 @@ public class Utilisateur {
 	 * Mutateur de la date d'embauche de l'objet Utilisateur
 	 * @param dateEmbauche
 	 */
-	public void setDateEmbauche(String dateEmbauche) {
+	public void setDateEmbauche(Date dateEmbauche) {
 		this.dateEmbauche = dateEmbauche;
 	}
 
@@ -332,53 +335,53 @@ public class Utilisateur {
 	 * Accesseur de la liste de fiches de frais de l'objet Utilisateur
 	 * @return listeFicheFrais
 	 */
-//	public List<FicheFrais> getLesFichesFrais() {
-//		return listeFicheFrais;
-//	}
-//	
-//	/**
-//	 * Mutateur de la liste de fiches de frais de l'objet Utilisateur
-//	 * @param listeFicheFrais
-//	 */
-//	public void setLesFichesFrais(List<FicheFrais> listeFicheFrais) {
-//		this.listeFicheFrais = listeFicheFrais;
-//	}
-//	
-//	/**
-//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
-//	 * @param index
-//	 * @return listeFicheFrais.get(index)
-//	 */
-//	public FicheFrais getUneFicheFrais(int index) {
-//		return listeFicheFrais.get(index);
-//	}
-//	
-//	/**
-//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
-//	 * @param mois
-//	 * @return resultat
-//	 */
-//	public FicheFrais getUneFicheFrais(String mois) {
-//		FicheFrais resultat = null;
-//		int index = 0;
-//		boolean trouve = false;
-//		while((trouve == false) && (index < listeFicheFrais.size())) {
-//			if(mois == listeFicheFrais.get(index).getMois()) {
-//				resultat = listeFicheFrais.get(index);
-//				trouve = true;
-//			}
-//			index = index + 1;
-//		}
-//		return resultat;
-//	}
-//
-//	/**
-//	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
-//	 * @return taille
-//	 */
-//	public int getNbFicheFrais() {
-//		return listeFicheFrais.size();
-//	}
+	public List<FicheFrais> getLesFichesFrais() {
+		return listeFicheFrais;
+	}
+	
+	/**
+	 * Mutateur de la liste de fiches de frais de l'objet Utilisateur
+	 * @param listeFicheFrais
+	 */
+	public void setLesFichesFrais(List<FicheFrais> listeFicheFrais) {
+		this.listeFicheFrais = listeFicheFrais;
+	}
+	
+	/**
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
+	 * @param index
+	 * @return listeFicheFrais.get(index)
+	 */
+	public FicheFrais getUneFicheFrais(int index) {
+		return listeFicheFrais.get(index);
+	}
+	
+	/**
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
+	 * @param mois
+	 * @return resultat
+	 */
+	public FicheFrais getUneFicheFrais(String mois) {
+		FicheFrais resultat = null;
+		int index = 0;
+		boolean trouve = false;
+		while((trouve == false) && (index < listeFicheFrais.size())) {
+			if(mois == listeFicheFrais.get(index).getMois()) {
+				resultat = listeFicheFrais.get(index);
+				trouve = true;
+			}
+			index = index + 1;
+		}
+		return resultat;
+	}
+
+	/**
+	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
+	 * @return taille
+	 */
+	public int getNbFicheFrais() {
+		return listeFicheFrais.size();
+	}
 
 	/**
 	 * Méthode toString de la classe Utilisateur
@@ -393,6 +396,13 @@ public class Utilisateur {
 				+ dateEmbauche + ", numeroPortable=" + numeroPortable
 				+ ", numeroFixe=" + numeroFixe + ", adresseMail=" + adresseMail
 				+ ", region=" + region.toString() + "]";
+		
+//		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nom=" + nom
+//				+ ", prenom=" + prenom + ", login=" + login + ", motDePasse="
+//				+ motDePasse + ", adresse=" + adresse + ", codePostal="
+//				+ codePostal + ", ville=" + ville + ", numeroPortable=" + numeroPortable
+//				+ ", numeroFixe=" + numeroFixe + ", adresseMail=" + adresseMail
+//				+ ", region=" + region.toString() + "]";
 	}
 
 }

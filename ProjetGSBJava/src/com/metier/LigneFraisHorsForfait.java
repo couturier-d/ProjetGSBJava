@@ -1,5 +1,7 @@
 package com.metier;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
@@ -17,7 +19,7 @@ import javax.persistence.Table;
  * @author halleguen-py
  */
 @Entity
-@Table (name="lignefraisforfait")
+@Table (name="lignefraisHorsforfait")
 public class LigneFraisHorsForfait {
 
 	@Id
@@ -35,11 +37,18 @@ public class LigneFraisHorsForfait {
 	private String libelleFraisHorsForfait;
 	
 	@Column(name="date")
-	private String date;
+	private Date date;
 	
-	@Column(name="montant")
+	@Column(name="montant", columnDefinition="Decimal(10,2)")
 	private double montant;
 	
+	/**
+	 * Constructeur vide pour hibernate
+	 */
+	public LigneFraisHorsForfait() {
+		super();
+	}
+
 	/**
 	 * Constructeur de la classe LigneFraisHorsForfait
 	 * @param unIdFraisHorsForfait
@@ -48,7 +57,7 @@ public class LigneFraisHorsForfait {
 	 * @param unMontant
 	 * @param laFicheFrais
 	 */
-	public LigneFraisHorsForfait(int unIdFraisHorsForfait, String unLibelleFraisHorsForfait, String uneDate, double unMontant, FicheFrais laFicheFrais) {
+	public LigneFraisHorsForfait(int unIdFraisHorsForfait, String unLibelleFraisHorsForfait, Date uneDate, double unMontant, FicheFrais laFicheFrais) {
 		super();
 		this.idLigneFraisHorsForfait = unIdFraisHorsForfait;
 		this.libelleFraisHorsForfait = unLibelleFraisHorsForfait;
@@ -93,7 +102,7 @@ public class LigneFraisHorsForfait {
 	 * Accesseur de la date de l'objet LigneFraisHorsForfait
 	 * @return date
 	 */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -101,7 +110,7 @@ public class LigneFraisHorsForfait {
 	 * Mutateur de la date de l'objet LigneFraisHorsForfait
 	 * @param date
 	 */
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

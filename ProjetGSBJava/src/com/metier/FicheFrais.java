@@ -1,7 +1,9 @@
 package com.metier;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,8 +31,9 @@ import org.hibernate.annotations.Columns;
 public class FicheFrais implements Serializable {
 
 	@Id
-	@Columns(columns = {@Column(name = "idVisiteur",insertable=false, updatable=false),
-	@Column(name = "mois",insertable=false, updatable=false)
+	@Columns(columns = {
+			@Column(name = "idVisiteur",insertable=false, updatable=false),
+			@Column(name = "mois",insertable=false, updatable=false)
 	})
 	private String idVisiteur;
 	private String mois;
@@ -42,11 +45,11 @@ public class FicheFrais implements Serializable {
 	@Column(name="nbJustificatifs")
 	private int nbJustificatifs;
 	
-	@Column(name="montantValide")
+	@Column(name="montantValide", columnDefinition="Decimal(10,2)")
 	private double montantValide;
 	
 	@Column(name="dateModif")
-	private String dateModif;
+	private Date dateModif;
 	
 	@OneToMany
 	@JoinColumns({
@@ -60,10 +63,16 @@ public class FicheFrais implements Serializable {
 		@JoinColumn(name="mois", insertable=false, updatable=false)})
 	private List <LigneFraisHorsForfait> listeFraisHorsForfait;
 	
-	@ManyToOne
-	@JoinColumn(name="idEtat")
+	@Column(name="idEtat")
 	private String etat;
 	
+	/**
+	 * Constructeur vide pour hibernate
+	 */
+	public FicheFrais() {
+		super();
+	}
+
 	/**
 	 * Constructeur ficheFrais
 	 * @param unMois
@@ -73,7 +82,7 @@ public class FicheFrais implements Serializable {
 		this.mois = unMois;
 		this.utilisateur = unUtilisateur;
 		this.nbJustificatifs = 0;
-		this.montantValide = 0;
+		this.montantValide = 0.0;
 		this.dateModif = null;
 		this.etat = "CR";
 		this.listeFraisForfait = new ArrayList<LigneFraisForfait>();
@@ -164,7 +173,7 @@ public class FicheFrais implements Serializable {
 	 * accesseur dateModif
 	 * @return dateModif
 	 */
-	public String getDateModif() {
+	public Date getDateModif() {
 		return dateModif;
 	}
 	
@@ -172,7 +181,7 @@ public class FicheFrais implements Serializable {
 	 * mutateur dateModif
 	 * @param dateModif
 	 */
-	public void setDateModif(String dateModif) {
+	public void setDateModif(Date dateModif) {
 		this.dateModif = dateModif;
 	}
 	
