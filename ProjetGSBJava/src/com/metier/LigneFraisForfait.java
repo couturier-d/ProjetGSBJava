@@ -46,7 +46,7 @@ public class LigneFraisForfait {
 	private FicheFrais ficheFrais;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="idFraisForfait")
 	private FraisForfait fraisForfait;
 	
 	/**

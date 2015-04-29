@@ -28,7 +28,7 @@ public class Utilisateur {
 	private String idUtilisateur;
 
 	@Column(name="idType")
-	private String idTypeUtilisateur;
+	private Character idTypeUtilisateur;
 	
 	@Column(name="nom")
 	private String nom;
@@ -54,10 +54,10 @@ public class Utilisateur {
 	@Column(name="dateEmbauche")
 	private Date dateEmbauche;
 	
-	@Column(name="numeroPortable")
+	@Column(name="numeroPortable", columnDefinition="char(10)")
 	private String numeroPortable;
 	
-	@Column(name="numeroFixe")
+	@Column(name="numeroFixe", columnDefinition="char(10)")
 	private String numeroFixe;
 	
 	@Column(name="adresseMail")
@@ -88,7 +88,7 @@ public class Utilisateur {
 	 * @param uneDateEmbauche
 	 * @param uneRegion
 	 */
-	public Utilisateur(String unIdUtilisateur, String unIdTypeUtilisateur, String unNom, String unPrenom, Date uneDateEmbauche, Region uneRegion) {
+	public Utilisateur(String unIdUtilisateur, Character unIdTypeUtilisateur, String unNom, String unPrenom, Date uneDateEmbauche, Region uneRegion) {
 		super();
 		this.idUtilisateur = unIdUtilisateur;
 		this.idTypeUtilisateur = unIdTypeUtilisateur;
@@ -127,7 +127,7 @@ public class Utilisateur {
 	 * Accesseur de l'id type de l'objet Utilisateur
 	 * @return idTypeUtilisateur
 	 */
-	public String getIdTypeUtilisateur() {
+	public Character getIdTypeUtilisateur() {
 		return idTypeUtilisateur;
 	}
 
@@ -135,7 +135,7 @@ public class Utilisateur {
 	 * Mutateur de l'id type de l'objet Utilisateur
 	 * @param idTypeUtilisateur
 	 */
-	public void setIdTypeUtilisateur(String idTypeUtilisateur) {
+	public void setIdTypeUtilisateur(Character idTypeUtilisateur) {
 		this.idTypeUtilisateur = idTypeUtilisateur;
 	}
 
@@ -347,41 +347,41 @@ public class Utilisateur {
 		this.listeFicheFrais = listeFicheFrais;
 	}
 	
-	/**
-	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
-	 * @param index
-	 * @return listeFicheFrais.get(index)
-	 */
-	public FicheFrais getUneFicheFrais(int index) {
-		return listeFicheFrais.get(index);
-	}
-	
-	/**
-	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
-	 * @param mois
-	 * @return resultat
-	 */
-	public FicheFrais getUneFicheFrais(String mois) {
-		FicheFrais resultat = null;
-		int index = 0;
-		boolean trouve = false;
-		while((trouve == false) && (index < listeFicheFrais.size())) {
-			if(mois == listeFicheFrais.get(index).getMois()) {
-				resultat = listeFicheFrais.get(index);
-				trouve = true;
-			}
-			index = index + 1;
-		}
-		return resultat;
-	}
+//	/**
+//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
+//	 * @param index
+//	 * @return listeFicheFrais.get(index)
+//	 */
+//	public FicheFrais getUneFicheFrais(int index) {
+//		return listeFicheFrais.get(index);
+//	}
+//	
+//	/**
+//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
+//	 * @param mois
+//	 * @return resultat
+//	 */
+//	public FicheFrais getUneFicheFrais(String mois) {
+//		FicheFrais resultat = null;
+//		int index = 0;
+//		boolean trouve = false;
+//		while((trouve == false) && (index < listeFicheFrais.size())) {
+//			if(mois == listeFicheFrais.get(index).getMois()) {
+//				resultat = listeFicheFrais.get(index);
+//				trouve = true;
+//			}
+//			index = index + 1;
+//		}
+//		return resultat;
+//	}
 
-	/**
-	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
-	 * @return taille
-	 */
-	public int getNbFicheFrais() {
-		return listeFicheFrais.size();
-	}
+//	/**
+//	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
+//	 * @return taille
+//	 */
+//	public int getNbFicheFrais() {
+//		return listeFicheFrais.size();
+//	}
 
 	/**
 	 * Méthode toString de la classe Utilisateur

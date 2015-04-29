@@ -18,7 +18,7 @@ public class AccesData {
 		return session.createQuery("from FraisForfait").list();
 	}
 	public static List<LigneFraisForfait> getListeLigneFraisForfait() 	{
-		return session.createQuery("from Lignefraisforfait").list();
+		return session.createQuery("from LigneFraisForfait").list();
 	}
 	public static List<LigneFraisHorsForfait> getListeLigneFraisHorsForfait() 	{
 		return session.createQuery("from LigneFraisHorsForfait").list();

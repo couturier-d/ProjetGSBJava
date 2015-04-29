@@ -24,7 +24,7 @@ public class Region {
 	@Column(name="idRegion")
 	private String idRegion;
 	
-	@Column(name="nom")
+	@Column(name="nomRegion")
 	private String nomRegion;
 	
 	@OneToMany
@@ -40,7 +40,7 @@ public class Region {
 		super();
 		this.idRegion = unIdRegion;
 		this.nomRegion = unNomRegion;
-//		this.listeUtilisateur = new ArrayList<Utilisateur>();
+		this.listeUtilisateur = new ArrayList<Utilisateur>();
 	}
 	
 	/**

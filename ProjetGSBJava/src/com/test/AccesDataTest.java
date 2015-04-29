@@ -17,8 +17,11 @@ public class AccesDataTest {
 	private List<Utilisateur> listeUtilisateur;
 	private List<Region> listeRegion;
 	
-//	private static List<FicheFrais> listeFichesFrais;
-//	private static List<FraisForfait> listeFraisForfait;
+	private static List<FicheFrais> listeFichesFrais;
+	private static List<FraisForfait> listeFraisForfait;
+	
+//	private static ArrayList<LigneFraisForfait> listeLignesFraisForfait;
+//	private static ArrayList<LigneFraisHorsForfait> listeLignesFraisHorsForfait;
 	
 	/*@Test
 	public void testGetListeFicheFrais() {
@@ -61,20 +64,29 @@ public class AccesDataTest {
 		assertNotNull("test chargement liste regions", listeRegion);
 	}
 	
+	public void getListeUtilisateur() {
+		listeUtilisateur = AccesData.getListeUtilisateur();
+		assertNotNull("test chargement liste utilisateurs", listeUtilisateur);
+	}
 	
+	public void getFicheFrais(int idFicheFrais) {
+		listeFichesFrais = AccesData.getListeFicheFrais();
+		assertNotNull("test chargement liste fiches frais", listeFichesFrais);
+	}
 	
+	public void getFraisForfait(int idFraisForfait) {
+		listeFraisForfait = AccesData.getListeFraisForfait();
+		assertNotNull("test chargement liste frais forfait", listeFraisForfait);
+	}
 	
-	
-/*//	public void getListeUtilisateur() {
-//	}
-//	public void getFicheFrais(int idFicheFrais) {
-//	}
-//	public void getFraisForfait(int idFraisForfait) {
-//	}
 //	public void getLigneFraisForfait(int idLigneFraisForfait) {
+//		
 //	}
+//	
+//	
 //	public void getLigneFraisHorsForfait(int idLigneFraisHorsForfait) {
 //	}
+	
 //	public void getRegion(int idRegion) {
 //	}
 //	public void getUtilisateur(int idUtilisateur) {
@@ -114,7 +126,7 @@ public class AccesDataTest {
 //	public void deleteUtilisateur(Utilisateur u) {	
 //	}
 //	public void addUtilisateur(Utilisateur u) {
-//	}*/
+//	}
 
 
 }
