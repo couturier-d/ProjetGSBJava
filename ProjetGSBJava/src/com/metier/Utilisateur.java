@@ -67,10 +67,7 @@ public class Utilisateur {
 	@JoinColumn(name="idRegion")
 	private Region region;
 	
-	@OneToMany
-	@JoinColumns({
-		@JoinColumn(name="idVisiteur", insertable=false, updatable=false),
-		@JoinColumn(name="mois", insertable=false, updatable=false)})
+	@OneToMany (mappedBy="utilisateur")
 	private List<FicheFrais> listeFicheFrais;
 
 	/**
@@ -104,7 +101,7 @@ public class Utilisateur {
 		this.numeroFixe = null;
 		this.adresseMail = null;
 		this.region = uneRegion;
-		this.listeFicheFrais = new ArrayList<FicheFrais>();
+//		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
 
 	/**
@@ -347,41 +344,41 @@ public class Utilisateur {
 		this.listeFicheFrais = listeFicheFrais;
 	}
 	
-//	/**
-//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
-//	 * @param index
-//	 * @return listeFicheFrais.get(index)
-//	 */
-//	public FicheFrais getUneFicheFrais(int index) {
-//		return listeFicheFrais.get(index);
-//	}
-//	
-//	/**
-//	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
-//	 * @param mois
-//	 * @return resultat
-//	 */
-//	public FicheFrais getUneFicheFrais(String mois) {
-//		FicheFrais resultat = null;
-//		int index = 0;
-//		boolean trouve = false;
-//		while((trouve == false) && (index < listeFicheFrais.size())) {
-//			if(mois == listeFicheFrais.get(index).getMois()) {
-//				resultat = listeFicheFrais.get(index);
-//				trouve = true;
-//			}
-//			index = index + 1;
-//		}
-//		return resultat;
-//	}
+	/**
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son index
+	 * @param index
+	 * @return listeFicheFrais.get(index)
+	 */
+	public FicheFrais getUneFicheFrais(int index) {
+		return listeFicheFrais.get(index);
+	}
+	
+	/**
+	 * Accesseur de la fiche de frais de l'objet Utilisateur, en fonction de son mois
+	 * @param mois
+	 * @return resultat
+	 */
+	public FicheFrais getUneFicheFrais(String mois) {
+		FicheFrais resultat = null;
+		int index = 0;
+		boolean trouve = false;
+		while((trouve == false) && (index < listeFicheFrais.size())) {
+			if(mois == listeFicheFrais.get(index).getMois()) {
+				resultat = listeFicheFrais.get(index);
+				trouve = true;
+			}
+			index = index + 1;
+		}
+		return resultat;
+	}
 
-//	/**
-//	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
-//	 * @return taille
-//	 */
-//	public int getNbFicheFrais() {
-//		return listeFicheFrais.size();
-//	}
+	/**
+	 * Accesseur de la taille de la liste de fiches de frais de l'objet Utilisateur
+	 * @return taille
+	 */
+	public int getNbFicheFrais() {
+		return listeFicheFrais.size();
+	}
 
 	/**
 	 * Méthode toString de la classe Utilisateur
@@ -396,13 +393,6 @@ public class Utilisateur {
 				+ dateEmbauche + ", numeroPortable=" + numeroPortable
 				+ ", numeroFixe=" + numeroFixe + ", adresseMail=" + adresseMail
 				+ ", region=" + region.toString() + "]";
-		
-//		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nom=" + nom
-//				+ ", prenom=" + prenom + ", login=" + login + ", motDePasse="
-//				+ motDePasse + ", adresse=" + adresse + ", codePostal="
-//				+ codePostal + ", ville=" + ville + ", numeroPortable=" + numeroPortable
-//				+ ", numeroFixe=" + numeroFixe + ", adresseMail=" + adresseMail
-//				+ ", region=" + region.toString() + "]";
 	}
 
 }
