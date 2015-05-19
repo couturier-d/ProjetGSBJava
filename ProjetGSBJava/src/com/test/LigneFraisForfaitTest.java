@@ -2,6 +2,8 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +13,13 @@ import com.metier.FraisForfait;
 import com.metier.LigneFraisForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
+import com.util.ConvertDate;
 
 public class LigneFraisForfaitTest {
 
 	Utilisateur utilisateur;
 	Region region;
+	Date date;
 	FicheFrais fiche, fiche2;
 	
 	LigneFraisForfait ligneFrais;
@@ -25,7 +29,8 @@ public class LigneFraisForfaitTest {
 	@Before
 	public void setUp() throws Exception {
 		region = new Region("1", "Pays de la Loire");
-		utilisateur = new Utilisateur("Secrétaire", "S","Andre", "David", "27/03/2015", region);
+		date = ConvertDate.toDate("27/03/2015");
+		utilisateur = new Utilisateur("Secrétaire", 'S',"Andre", "David", date, region);
 		fiche = new FicheFrais("201503", utilisateur);
 		fiche2 = new FicheFrais("201504", utilisateur);
 		

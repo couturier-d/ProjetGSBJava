@@ -2,6 +2,8 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +13,13 @@ import com.metier.FraisForfait;
 import com.metier.LigneFraisHorsForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
+import com.util.ConvertDate;
 
 public class LigneFraisHorsForfaitTest {
 
 	Utilisateur utilisateur;
 	Region region;
+	Date date, date2, date3;
 	FicheFrais fiche, fiche2;
 	
 	LigneFraisHorsForfait ligneFrais;
@@ -25,13 +29,14 @@ public class LigneFraisHorsForfaitTest {
 	@Before
 	public void setUp() throws Exception {
 		region = new Region("1", "Pays de la Loire");
-		utilisateur = new Utilisateur("Secrétaire", "S","Andre", "David", "27/03/2015", region);
+		date = ConvertDate.toDate("27/03/2015");
+		date2 = ConvertDate.toDate("18/05/2015");
+		date2 = ConvertDate.toDate("19/05/2015");
+		utilisateur = new Utilisateur("Secrétaire", 'S',"Andre", "David", date, region);
 		fiche = new FicheFrais("201503", utilisateur);
 		fiche2 = new FicheFrais("201504", utilisateur);
 		
-		f1 = new FraisForfait("KM", "Frais Kilométrique", 0.62);
-		f2 = new FraisForfait("ETP", "Forfait Etape", 110);
-		ligneFrais = new LigneFraisHorsForfait(1, "Restaurant avec practicien", "2015/02/04", 50, fiche);
+		ligneFrais = new LigneFraisHorsForfait(1, "Restaurant avec practicien", date2, 50, fiche);
 	}
 
 	@After
@@ -41,8 +46,6 @@ public class LigneFraisHorsForfaitTest {
 		fiche = null;
 		fiche2 = null;
 		
-		f1 = null;
-		f2 = null;
 		ligneFrais = null;
 	}
 
@@ -94,14 +97,14 @@ public class LigneFraisHorsForfaitTest {
 	//test accesseur date
 	@Test
 	public void testGetDateFraisForfait() {
-		assertEquals("Test accesseur quantite", ligneFrais.getDate() , "2015/02/04");
+		assertEquals("Test accesseur quantite", ligneFrais.getDate() , date2);
 	}
 	
 	//test mutateur date
 	@Test
 	public void testSetDateFraisForfait() {
-		ligneFrais.setDate("2015/03/04");
-		assertEquals("Test mutateur quantite", ligneFrais.getDate(), "2015/03/04");
+		ligneFrais.setDate(date3);
+		assertEquals("Test mutateur quantite", ligneFrais.getDate(), date3);
 	}
 	
 	//test accesseur montant

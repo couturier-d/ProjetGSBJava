@@ -15,11 +15,14 @@ import com.metier.LigneFraisForfait;
 import com.metier.LigneFraisHorsForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
+import com.util.ConvertDate;
 
 public class FicheFraisTest {
 
 	Utilisateur utilisateur, utilisateur2;
 	Region region;
+	Date date1;
+	Date date2;
 	
 	FicheFrais fiche;
 	
@@ -34,8 +37,10 @@ public class FicheFraisTest {
 	@Before
 	public void setUp() throws Exception {
 		region = new Region("1", "Pays de la Loire");
-		utilisateur = new Utilisateur("Secrétaire", "S","Andre", "David", "27/03/2015", region);
-		utilisateur2 = new Utilisateur("Secrétaire", "S","Smith", "John", "28/03/2015", region);
+		date1 = ConvertDate.toDate("27/03/2015");
+		date2 = ConvertDate.toDate("28/03/2015");
+		utilisateur = new Utilisateur("g01", 'S', "Andre", "David", date1, region);
+		utilisateur2 = new Utilisateur("g02", 'S',"Smith", "John", date2, region);
 		
 		fiche = new FicheFrais("201503", utilisateur);
 		

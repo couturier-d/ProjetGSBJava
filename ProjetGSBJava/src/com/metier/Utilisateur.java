@@ -101,7 +101,7 @@ public class Utilisateur {
 		this.numeroFixe = null;
 		this.adresseMail = null;
 		this.region = uneRegion;
-//		this.listeFicheFrais = new ArrayList<FicheFrais>();
+		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
 
 	/**

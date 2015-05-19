@@ -1,9 +1,11 @@
 package com.test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.metier.*;
+import com.util.ConvertDate;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +16,7 @@ import org.junit.Test;
 public class RegionTest {
 	
 	Region r, r2;
+	Date date, date2;
 	List<Utilisateur> ensUtil = new ArrayList<Utilisateur>();
 	List<Utilisateur> ensUtil2 = new ArrayList<Utilisateur>();
 	Utilisateur u1, u2;
@@ -22,8 +25,10 @@ public class RegionTest {
 	public void setUp() throws Exception {
 		r = new Region("10", "Bretagne");
 		r2 = new Region("1", "Pays de la Loire");
-		u1 = new Utilisateur("g001", "Secrétaire", "Couturier", "David", "27/03/2015", r2);
-		u2 = new Utilisateur("g002", "Troll", "Truillet", "Adrien", "27/03/2015", r2);
+		date = ConvertDate.toDate("27/03/2015");
+		date2 = ConvertDate.toDate("28/03/2015");
+		u1 = new Utilisateur("g01", 'C', "Couturier", "David", date, r2);
+		u2 = new Utilisateur("g02", 'S', "Truillet", "Adrien", date2, r2);
 		ensUtil2.add(u1);
 		ensUtil2.add(u2);
 	}
@@ -97,8 +102,8 @@ public class RegionTest {
 	public void testGetUnUtilisateurIndex() {
 		r.setLesUtilisateurs(ensUtil2);
 		assertEquals("Le test sur un utilisateur inexistant fonctionne", r.getUnUtilisateur("g1"), null);
-		assertEquals("Le 1er utilisateur est correct", r.getUnUtilisateur("g001"), u1);
-		assertEquals("L'accesseur sur un utilisateur en fonction de l'index fonctionne", r.getUnUtilisateur("g002"), u2);
+		assertEquals("Le 1er utilisateur est correct", r.getUnUtilisateur("g01"), u1);
+		assertEquals("L'accesseur sur un utilisateur en fonction de l'index fonctionne", r.getUnUtilisateur("g02"), u2);
 	}
 	
 	@Test

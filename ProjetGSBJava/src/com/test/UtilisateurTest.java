@@ -3,6 +3,7 @@ package com.test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.After;
@@ -10,10 +11,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.metier.*;
+import com.util.ConvertDate;
 
 public class UtilisateurTest {
 	
-	Region r, r2;
+	Region region, region2;
+	Date date, date2;
 	Utilisateur u, u2;
 	List<FicheFrais> ensFiches = new ArrayList<FicheFrais>();
 	List<FicheFrais> ensFiches2 = new ArrayList<FicheFrais>();
@@ -21,10 +24,12 @@ public class UtilisateurTest {
 
 	@Before
 	public void setUp() throws Exception {
-		r = new Region("10", "Bretagne");
-		r2 = new Region("1", "Pays de la Loire");
-		u = new Utilisateur("g001", "Secrétaire", "Couturier", "David", "27/03/2015", r);
-		u2 = new Utilisateur("g002", "Troll", "Truillet", "Adrien", "27/03/2015", r);
+		region = new Region("10", "Bretagne");
+		region2 = new Region("1", "Pays de la Loire");
+		date = ConvertDate.toDate("27/03/2015");
+		date2 = ConvertDate.toDate("28/03/2015");
+		u = new Utilisateur("g01", 'C', "Couturier", "David", date, region);
+		u2 = new Utilisateur("g02", 'S', "Truillet", "Adrien", date, region);
 		f = new FicheFrais("201503", u);
 		f2 = new FicheFrais("201504", u);
 		ensFiches.add(f);
@@ -37,8 +42,8 @@ public class UtilisateurTest {
 		f2 = null;
 		u2 = null;
 		u = null;
-		r = null;
-		r2 = null;
+		region = null;
+		region2 = null;
 	}
 
 	@Test
@@ -48,24 +53,24 @@ public class UtilisateurTest {
 
 	@Test
 	public void testGetIdUtilisateur() {
-		assertEquals("L'accesseur sur l'id fonctionne", u.getIdUtilisateur(), "g001");
+		assertEquals("L'accesseur sur l'id fonctionne", u.getIdUtilisateur(), "g01");
 	}
 	
 	@Test
 	public void testSetIdUtilisateur() {
-		u.setIdUtilisateur("g002");
-		assertEquals("Le mutateur sur l'id fonctionne", u.getIdUtilisateur(), "g002");
+		u.setIdUtilisateur("g02");
+		assertEquals("Le mutateur sur l'id fonctionne", u.getIdUtilisateur(), "g02");
 	}
 	
 	@Test
 	public void testGetIdTypeUtilisateur() {
-		assertEquals("L'accesseur sur l'id du type d'utilisateur fonctionne", u.getIdTypeUtilisateur(), "Secrétaire");
+		assertEquals("L'accesseur sur l'id du type d'utilisateur fonctionne", u.getIdTypeUtilisateur().toString(), "C");
 	}
 	
 	@Test
 	public void testSetIdTypeUtilisateur() {
-		u.setIdTypeUtilisateur("Secrétaire en chef");
-		assertEquals("Le mutateur sur l'id du type d'utilisateur fonctionne", u.getIdTypeUtilisateur(), "Secrétaire en chef");
+		u.setIdTypeUtilisateur('S');
+		assertEquals("Test sur le mutateur du type d'utilisateur", u.getIdTypeUtilisateur().toString(), "S");
 	}
 	
 	@Test
@@ -147,13 +152,13 @@ public class UtilisateurTest {
 	
 	@Test
 	public void testGetDateEmbauche() {
-		assertEquals("L'accesseur sur la date d'embauche fonctionne", u.getDateEmbauche(), "27/03/2015");
+		assertEquals("L'accesseur sur la date d'embauche fonctionne", u.getDateEmbauche(), date);
 	}
 	
 	@Test
 	public void testSetDateEmbauche() {
-		u.setDateEmbauche("31/03/2015");
-		assertEquals("Le mutateur sur la date d'embauche fonctionne", u.getDateEmbauche(), "31/03/2015");
+		u.setDateEmbauche(date2);
+		assertEquals("Le mutateur sur la date d'embauche fonctionne", u.getDateEmbauche(), date2);
 	}
 	
 	@Test
@@ -191,13 +196,13 @@ public class UtilisateurTest {
 	
 	@Test
 	public void testGetRegion() {
-		assertEquals("L'accesseur sur la région fonctionne", u.getRegion(), r);
+		assertEquals("L'accesseur sur la région fonctionne", u.getRegion(), region);
 	}
 	
 	@Test
 	public void testSetRegion() {
-		u.setRegion(r2);
-		assertEquals("Le mutateur sur la région fonctionne", u.getRegion(), r2);
+		u.setRegion(region2);
+		assertEquals("Le mutateur sur la région fonctionne", u.getRegion(), region2);
 	}
 	
 	@Test
