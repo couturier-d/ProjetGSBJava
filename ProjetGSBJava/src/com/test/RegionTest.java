@@ -41,6 +41,7 @@ public class RegionTest {
 		u1 = null;
 		r = null;
 		r2 = null;
+		date = date2 = null;
 	}
 
 	@Test

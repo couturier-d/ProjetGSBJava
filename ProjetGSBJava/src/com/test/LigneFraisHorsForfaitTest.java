@@ -43,6 +43,7 @@ public class LigneFraisHorsForfaitTest {
 	public void tearDown() throws Exception {
 		region = null;
 		utilisateur = null;
+		date = date2 = date3 = null;
 		fiche = null;
 		fiche2 = null;
 		

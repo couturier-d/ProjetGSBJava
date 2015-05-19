@@ -38,12 +38,10 @@ public class UtilisateurTest {
 
 	@After
 	public void tearDown() throws Exception {
-		f = null;
-		f2 = null;
-		u2 = null;
-		u = null;
-		region = null;
-		region2 = null;
+		f = f2 = null;
+		u = u2 = null;
+		region = region2 = null;
+		date = date2 = null;
 	}
 
 	@Test

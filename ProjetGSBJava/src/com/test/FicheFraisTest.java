@@ -91,28 +91,16 @@ public class FicheFraisTest {
 	@After
 	public void tearDown() throws Exception {
 		region = null;
-		utilisateur = null;
-		utilisateur2 = null;
+		utilisateur = utilisateur2 = null;
 		
 		fiche = null;
-		f1 = null;
-		f2 = null;
+		f1 = f2 = null;
 
-		lesFraisForfait1 = null;
-		lesFraisForfait2 = null;
-		lesFraisHorsForfait1 = null;
-		lesFraisHorsForfait2 = null;
+		lesFraisForfait1 = lesFraisForfait2 = null;
+		lesFraisHorsForfait1 = lesFraisHorsForfait2 = null;
 		
-		fraisF1 = null;
-		fraisF2 = null;
-		fraisF3 = null;
-		fraisF4 = null;
-		
-		fraisHF1 = null;
-		fraisHF2 = null;
-		fraisHF3 = null;
-		fraisHF4 = null;
-		fraisHF5 = null;
+		fraisF1 = fraisF2 = fraisF3 = fraisF4 = null;
+		fraisHF1 = fraisHF2 = fraisHF3 = fraisHF4 = fraisHF5 = null;
 	}
 
 	//test de l'instanciation

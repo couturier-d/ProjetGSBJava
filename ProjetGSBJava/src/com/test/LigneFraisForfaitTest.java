@@ -43,8 +43,8 @@ public class LigneFraisForfaitTest {
 	public void tearDown() throws Exception {
 		region = null;
 		utilisateur = null;
-		fiche = null;
-		fiche2 = null;
+		fiche = fiche2 = null;
+		date = null;
 		
 		ligneFrais = null;
 		f1 = null;
