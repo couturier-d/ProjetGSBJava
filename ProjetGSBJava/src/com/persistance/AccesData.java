@@ -29,22 +29,29 @@ public class AccesData {
 	public static List<Utilisateur> getListeUtilisateur() 	{
 		return session.createQuery("from Utilisateur").list();
 	}
-	public static FicheFrais getFicheFrais(int idFicheFrais) 	{
-		return (FicheFrais) session.get(FicheFrais.class, idFicheFrais);
+	public static FicheFrais getFicheFrais(String idVisiteur, String mois) 	{
+		FicheFraisPK ficheFraisPK = new FicheFraisPK();
+		ficheFraisPK.setIdVisiteur(idVisiteur);
+		ficheFraisPK.setMois(mois);
+		return (FicheFrais) session.get(FicheFrais.class, ficheFraisPK);
 	}
-	public static FraisForfait getFraisForfait(int idFraisForfait) 	{
+	public static FraisForfait getFraisForfait(String idFraisForfait) 	{
 		return (FraisForfait) session.get(FraisForfait.class, idFraisForfait);
 	}
-	public static LigneFraisForfait getLigneFraisForfait(int idLigneFraisForfait) 	{
-		return (LigneFraisForfait) session.get(LigneFraisForfait.class, idLigneFraisForfait);
+	public static LigneFraisForfait getLigneFraisForfait(String idVisiteur, String mois, String idFraisForfait) 	{
+		LigneFraisForfaitPK ligneFraisForfaitPK = new LigneFraisForfaitPK();
+		ligneFraisForfaitPK.setIdVisiteur(idVisiteur);
+		ligneFraisForfaitPK.setMois(mois);
+		ligneFraisForfaitPK.setIdFraisForfait(idFraisForfait);
+		return (LigneFraisForfait) session.get(LigneFraisForfait.class, ligneFraisForfaitPK);
 	}
 	public static LigneFraisHorsForfait getLigneFraisHorsForfait(int idLigneFraisHorsForfait) 	{
 		return (LigneFraisHorsForfait) session.get(LigneFraisHorsForfait.class, idLigneFraisHorsForfait);
 	}
-	public static Region getRegion(int idRegion) 	{
+	public static Region getRegion(String idRegion) 	{
 		return (Region) session.get(Region.class, idRegion);
 	}
-	public static Utilisateur getUtilisateur(int idUtilisateur) 	{
+	public static Utilisateur getUtilisateur(String idUtilisateur) 	{
 		return (Utilisateur) session.get(Utilisateur.class, idUtilisateur);
 	}
 	public static void addFicheFrais(FicheFrais f) 	{

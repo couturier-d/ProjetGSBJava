@@ -2,6 +2,7 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,6 +14,7 @@ import com.metier.LigneFraisHorsForfait;
 import com.metier.Region;
 import com.metier.Utilisateur;
 import com.persistance.AccesData;
+import com.util.ConvertDate;
 
 public class AccesDataTest {
 	
@@ -20,6 +22,8 @@ public class AccesDataTest {
 	FraisForfait fraisForfait;
 	LigneFraisForfait ligneFraisForfait;
 	LigneFraisHorsForfait ligneFraisHorsForfait;
+	Region laRegion;
+	Utilisateur utilisateur;
 	
 	private List<Utilisateur> listeUtilisateur;
 	private List<Region> listeRegion;
@@ -31,7 +35,7 @@ public class AccesDataTest {
 	private static List<LigneFraisHorsForfait> listeLigneFraisHorsForfait;
 	
 	@Test
-	public void getListRegion() {
+	public void getListeRegionTest() {
 		listeRegion = AccesData.getListeRegion();
 		assertNotNull("test chargement liste regions", listeRegion);
 		assertEquals("test nb region", listeRegion.size(), 27);
@@ -42,12 +46,12 @@ public class AccesDataTest {
 		assertEquals(listeRegion.get(1).getNomRegion(), "Franche Comte");
 		assertEquals(listeRegion.get(2).getIdRegion(), "11");
 		assertEquals(listeRegion.get(2).getNomRegion(), "Haute Normandie");
-		
 	}
 	
 	@Test
-	public void getListeUtilisateur() {
+	public void getListeUtilisateurTest() {
 		listeUtilisateur = AccesData.getListeUtilisateur();
+		//Date dateembauche = ConvertDate.toDate("21/12/2005");
 		assertNotNull("test chargement liste utilisateurs", listeUtilisateur);
 		assertEquals("test nb utilisateurs", listeUtilisateur.size(), 27);
 		
@@ -57,18 +61,22 @@ public class AccesDataTest {
 		assertEquals(listeUtilisateur.get(0).getNom(), "Villechalane");
 		assertEquals(listeUtilisateur.get(0).getPrenom(), "Louis");
 		assertEquals(listeUtilisateur.get(0).getLogin(), "lvillachane");
+		//assertEquals(listeUtilisateur.get(0).getDateEmbauche(), dateembauche);
 		assertEquals(listeUtilisateur.get(0).getRegion().getIdRegion(), "16");
+		assertEquals(listeUtilisateur.get(0).getRegion().getNomRegion(), "Midi-Pyrénées");
 		assertEquals(listeUtilisateur.get(1).getIdUtilisateur(), "a17");
 		assertEquals(listeUtilisateur.get(1).getIdTypeUtilisateur().toString(), "V");
 		assertEquals(listeUtilisateur.get(1).getNom(), "Andre");
 		assertEquals(listeUtilisateur.get(1).getPrenom(), "David");
 		assertEquals(listeUtilisateur.get(1).getLogin(), "dandre");
+		//assertEquals(listeUtilisateur.get(1).getDateEmbauche(), ConvertDate.toDate("1998/11/23"));
 		assertEquals(listeUtilisateur.get(1).getRegion().getIdRegion(), "16");
+		assertEquals(listeUtilisateur.get(1).getRegion().getNomRegion(), "Midi-Pyrénées");
 	}
 	
 	
 	@Test
-	public void getListeFicheFrais() {
+	public void getListeFicheFraisTest() {
 		listeFichesFrais = AccesData.getListeFicheFrais();
 		assertNotNull("test chargement liste fiches frais", listeFichesFrais);
 		assertEquals("test nb fiches frais", listeFichesFrais.size(), 569);
@@ -83,11 +91,10 @@ public class AccesDataTest {
 		assertEquals(listeFichesFrais.get(19).getNbJustificatifs(), 10);
 		assertEquals(listeFichesFrais.get(19).getMontantValide(), 4471.32, 0);
 		assertEquals(listeFichesFrais.get(19).getEtat(), "VA");
-	
 	}
 	
 	@Test
-	public void getListeFraisForfait() {
+	public void getListeFraisForfaitTest() {
 		listeFraisForfait = AccesData.getListeFraisForfait();
 		assertNotNull("test chargement liste frais forfait", listeFraisForfait);
 		
@@ -100,52 +107,142 @@ public class AccesDataTest {
 		assertEquals(listeFraisForfait.get(1).getMontant(), 0.62, 0);
 	}
 	
-//	public void getListeLigneFraisForfait() {
-//	}
-//	public void getListeLigneFraisHorsForfait() {
-//	}
+	@Test
+	public void getListeLigneFraisForfaitTest() {
+	listeLigneFraisForfait = AccesData.getListeLigneFraisForfait();
+	assertNotNull("test chargement liste ligne frais forfait", listeLigneFraisForfait);
+	
+	assertEquals("nb ligne frais forfait", listeLigneFraisForfait.size(), 2276);
+	assertEquals(listeLigneFraisForfait.get(0).getIdFraisForfait(), "ETP");
+	assertEquals(listeLigneFraisForfait.get(0).getQuantite(), 6);
+	assertEquals(listeLigneFraisForfait.get(0).getFicheFrais().getIdVisiteur(), "a131");
+	assertEquals(listeLigneFraisForfait.get(0).getFicheFrais().getMois(), "201301");
+	assertEquals(listeLigneFraisForfait.get(750).getIdFraisForfait(), "NUI");
+	assertEquals(listeLigneFraisForfait.get(750).getQuantite(), 3);
+	assertEquals(listeLigneFraisForfait.get(750).getFicheFrais().getIdVisiteur(), "b28");
+	assertEquals(listeLigneFraisForfait.get(750).getFicheFrais().getMois(), "201407");
+	}
+	
+	@Test
+	public void getListeLigneFraisHorsForfaitTest() {
+		listeLigneFraisHorsForfait = AccesData.getListeLigneFraisHorsForfait();
+		assertNotNull("test chargement liste ligne frais hors forfait", listeLigneFraisHorsForfait);
+		
+		assertEquals("nb ligne frais hors forfait", listeLigneFraisHorsForfait.size(), 79260);
+		assertEquals(listeLigneFraisHorsForfait.get(0).getIdLigneFraisHorsForfait(), 3885);
+		assertEquals(listeLigneFraisHorsForfait.get(0).getLibelleFraisHorsForfait(), "traiteur, alimentation, boisson");
+		assertEquals(listeLigneFraisHorsForfait.get(0).getMontant(), 133.00, 0);
+		assertEquals(listeLigneFraisHorsForfait.get(0).getFicheFrais().getIdVisiteur(), "a131");
+		assertEquals(listeLigneFraisHorsForfait.get(0).getFicheFrais().getMois(), "201301");
+		assertEquals(listeLigneFraisHorsForfait.get(14).getIdLigneFraisHorsForfait(), 3899);
+		assertEquals(listeLigneFraisHorsForfait.get(14).getLibelleFraisHorsForfait(), "location salle conférence");
+		assertEquals(listeLigneFraisHorsForfait.get(14).getMontant(), 184.00, 0);
+		assertEquals(listeLigneFraisHorsForfait.get(14).getFicheFrais().getIdVisiteur(), "a131");
+		assertEquals(listeLigneFraisHorsForfait.get(14).getFicheFrais().getMois(), "201302");
+	}
 
-//	public void getFicheFrais(int idFicheFrais) {
+	@Test
+	public void getFicheFraisTest() {
+		laFiche = AccesData.getFicheFrais("a55", "201307");
+		assertNotNull("test chargement fiche frais", laFiche);
+
+		assertEquals(laFiche.getIdVisiteur(), "a55");
+		assertEquals(laFiche.getMois(), "201307");
+		assertEquals(laFiche.getNbJustificatifs(), 12);
+		assertEquals(laFiche.getMontantValide(), 7023.48, 0);
+		assertEquals(laFiche.getEtat(), "RB");
+	}
+	
+	@Test
+	public void getFraisForfaitTest() {
+		fraisForfait = AccesData.getFraisForfait("ETP");
+		assertNotNull("test chargement frais forfait", fraisForfait);
+
+		assertEquals(fraisForfait.getIdFraisForfait(), "ETP");
+		assertEquals(fraisForfait.getLibelleFraisForfait(), "Forfait Etape");
+		assertEquals(fraisForfait.getMontant(), 110.00, 0);
+	}
+	
+	@Test
+	public void getLigneFraisForfaitTest() {
+		ligneFraisForfait = AccesData.getLigneFraisForfait("a93", "201310", "NUI");
+		assertNotNull("test chargement ligne frais forfait", ligneFraisForfait);
+
+		assertEquals(ligneFraisForfait.getIdFraisForfait(), "NUI");
+		assertEquals(ligneFraisForfait.getQuantite(), 10);
+		assertEquals(ligneFraisForfait.getFicheFrais().getIdVisiteur(), "a93");
+		assertEquals(ligneFraisForfait.getFicheFrais().getMois(), "201310");
+	}
+	
+	@Test
+	public void getLigneFraisHorsForfaitTest() {
+		ligneFraisHorsForfait = AccesData.getLigneFraisHorsForfait(3892);
+		assertNotNull("test chargement ligne frais hors forfait", ligneFraisHorsForfait);
+
+		assertEquals(ligneFraisHorsForfait.getIdLigneFraisHorsForfait(), 3892);
+		assertEquals(ligneFraisHorsForfait.getLibelleFraisHorsForfait(), "location équipement vidéo/sonore");
+		assertEquals(ligneFraisHorsForfait.getMontant(), 813.00, 0);
+		assertEquals(ligneFraisHorsForfait.getFicheFrais().getIdVisiteur(), "a131");
+		assertEquals(ligneFraisHorsForfait.getFicheFrais().getMois(), "201301");
+	}
+	
+	@Test
+	public void getRegionTest() {
+		laRegion = AccesData.getRegion("6");
+		assertNotNull("test chargement region", laRegion);
+
+		assertEquals(laRegion.getIdRegion(), "6");
+		assertEquals(laRegion.getNomRegion(), "Bretagne");
+	}
+	
+	@Test
+	public void getUtilisateurTest() {
+		utilisateur = AccesData.getUtilisateur("b13");
+		assertNotNull("test chargement utilisateur", utilisateur);
+
+		assertEquals(utilisateur.getIdUtilisateur(), "b13");
+		assertEquals(utilisateur.getIdTypeUtilisateur().toString(), "V");
+		assertEquals(utilisateur.getNom(), "Bentot");
+		assertEquals(utilisateur.getPrenom(), "Pascal");
+		assertEquals(utilisateur.getLogin(), "pbentot");
+		assertEquals(utilisateur.getRegion().getIdRegion(), "16");
+		assertEquals(utilisateur.getRegion().getNomRegion(), "Midi-Pyrénées");
+		
+	}
+	
+//	@Test
+//	public void addDeleteFicheFraisTest() {
+//		Utilisateur u = AccesData.getUtilisateur("a131");
+//		FicheFrais f = new FicheFrais("201307", u);
+//		assertTrue(AccesData.addFicheFrais(f));
+//		listeFichesFrais = AccesData.getListeFicheFrais();
+//		assertTrue(AccesData.deleteTypeCharge(listeTypeCharge.get(listeTypeCharge.size()-1)));
 //	}
-//	public void getFraisForfait(int idFraisForfait) {
+//	public void updateFicheFraisTest(FicheFrais f) {
 //	}
-//	public void getLigneFraisForfait(int idLigneFraisForfait) {
+//	public void addFraisForfaitTest(FraisForfait f) {
 //	}
-//	public void getLigneFraisHorsForfait(int idLigneFraisHorsForfait) {
+//	public void deleteFraisForfaitTest(FraisForfait f) {
 //	}
-//	public void getRegion(int idRegion) {
+//	public void updateFraisForfaitTest(FraisForfait f) {
 //	}
-//	public void getUtilisateur(int idUtilisateur) {
+//	public void updateLigneFraisForfaitTest(LigneFraisForfait l){
 //	}
-//	public void addFicheFrais(FicheFrais f) {
+//	public void deleteLigneFraisForfaitTest(LigneFraisForfait l) {
 //	}
-//	public void deleteFicheFrais(FicheFrais f) {
+//	public void addLigneFraisForfaitTest(LigneFraisForfait l) {
 //	}
-//	public void updateFicheFrais(FicheFrais f) {
+//	public void addLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
 //	}
-//	public void addFraisForfait(FraisForfait f) {
+//	public void deleteLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
 //	}
-//	public void deleteFraisForfait(FraisForfait f) {
+//	public void updateLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
 //	}
-//	public void updateFraisForfait(FraisForfait f) {
+//	public void addRegionTest(Region r) {
 //	}
-//	public void updateLigneFraisForfait(LigneFraisForfait l){
+//	public void deleteRegionTest(Region r) {
 //	}
-//	public void deleteLigneFraisForfait(LigneFraisForfait l) {
-//	}
-//	public void addLigneFraisForfait(LigneFraisForfait l) {
-//	}
-//	public void addLigneFraisHorsForfait(LigneFraisHorsForfait l) {
-//	}
-//	public void deleteLigneFraisHorsForfait(LigneFraisHorsForfait l) {
-//	}
-//	public void updateLigneFraisHorsForfait(LigneFraisHorsForfait l) {
-//	}
-//	public void addRegion(Region r) {
-//	}
-//	public void deleteRegion(Region r) {
-//	}
-//	public void updateRegion(Region r) {
+//	public void updateRegionTest(Region r) {
 //	}
 //	public void updateUtilisateur() {
 //		Utilisateur u = AccesData.getStation(1);
