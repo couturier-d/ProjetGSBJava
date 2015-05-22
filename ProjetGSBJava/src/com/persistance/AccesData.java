@@ -189,42 +189,132 @@ public class AccesData {
 		session.clear();
 		return succes;
 	}
-	public static void addLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
-		session.saveOrUpdate(l);
-		trans.commit();
+	public static Boolean addLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(l);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void deleteLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
-		session.delete(l);
-		trans.commit();
+	public static Boolean deleteLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.delete(l);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void updateLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
-		session.saveOrUpdate(l);
-		trans.commit();
+	public static Boolean updateLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(l);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void addRegion(Region r) 	{
-		session.saveOrUpdate(r);
-		trans.commit();
+	public static Boolean addRegion(Region r) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(r);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void deleteRegion(Region r) 	{
-		session.delete(r);
-		trans.commit();
+	public static Boolean deleteRegion(Region r) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.delete(r);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void updateRegion(Region r) 	{
-		session.saveOrUpdate(r);
-		trans.commit();
+	public static Boolean updateRegion(Region r) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(r);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void updateUtilisateur(Utilisateur u)
+	public static Boolean updateUtilisateur(Utilisateur u)
 	{
-		session.saveOrUpdate(u);
-		trans.commit();
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(u);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void deleteUtilisateur(Utilisateur u) 	{
-		session.delete(u);
-		trans.commit();
+	public static Boolean deleteUtilisateur(Utilisateur u) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.delete(u);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
-	public static void addUtilisateur(Utilisateur u) 	{
-		session.saveOrUpdate(u);
-		trans.commit();
+	public static Boolean addUtilisateur(Utilisateur u) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(u);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
 	}
 	public static void closeBd() 	{
 		session.close();

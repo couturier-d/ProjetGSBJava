@@ -2,6 +2,7 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -240,8 +241,13 @@ public class AccesDataTest {
 		f.setLibelleFraisForfait("Forfait Etape");
 		assertTrue(AccesData.updateFraisForfait(f));
 	}
-//	public void updateLigneFraisForfaitTest(LigneFraisForfait l){
-//	}
+	
+	@Test
+	public void updateLigneFraisForfaitTest() {
+		LigneFraisForfait l = AccesData.getLigneFraisForfait("a131", "201301", "ETP");
+		l.setQuantite(6);
+		assertTrue(AccesData.updateLigneFraisForfait(l));
+	}
 	
 	@Test
 	public void addDeleteLigneFraisForfaitTest() {
@@ -251,33 +257,52 @@ public class AccesDataTest {
 		assertTrue(AccesData.addLigneFraisForfait(l));
 		assertTrue(AccesData.deleteLigneFraisForfait(l));
 	}
-//	public void addLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
-//	}
-//	public void deleteLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
-//	}
-//	public void updateLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
-//	}
-//	public void addRegionTest(Region r) {
-//	}
-//	public void deleteRegionTest(Region r) {
-//	}
-//	public void updateRegionTest(Region r) {
-//	}
-//	public void updateUtilisateur() {
-//		Utilisateur u = AccesData.getStation(1);
-//		String ancValeur = s.getLibelleEmplacement();
-//		String nouvelleValeur = "gare test";
-//		s.setLibelleEmplacement(nouvelleValeur);
-//		assertTrue(AccesData.updateStation(s));
-//		// remise à l'état initial
-//		s.setLibelleEmplacement(ancValeur);
-//		assertTrue(AccesData.updateStation(s));
-//		s = AccesData.getStation(1);
-//	}
-//	public void deleteUtilisateur(Utilisateur u) {	
-//	}
-//	public void addUtilisateur(Utilisateur u) {
-//	}
+	
+	@Test
+	public void addDeleteLigneFraisHorsForfaitTest() {
+		Date uneDate = ConvertDate.toDate("2024-01-01");
+		FicheFrais f = AccesData.getFicheFrais("a131", "202401");
+		FraisForfait f2 = AccesData.getFraisForfait("ETP");
+		LigneFraisHorsForfait l = new LigneFraisHorsForfait(1000, "traiteur, alimentation, boisson", uneDate, 100.00, f);
+		assertTrue(AccesData.addLigneFraisHorsForfait(l));
+		assertTrue(AccesData.deleteLigneFraisHorsForfait(l));
+	}
+	
+	@Test
+	public void updateLigneFraisHorsForfaitTest() {
+		LigneFraisHorsForfait l = AccesData.getLigneFraisHorsForfait(3885);
+		l.setMontant(133);
+		assertTrue(AccesData.updateLigneFraisHorsForfait(l));
+	}
+	
+	@Test
+	public void addDeleteRegionTest() {
+		Region r = new Region("100", "Saint-Louis");
+		assertTrue(AccesData.addRegion(r));
+		assertTrue(AccesData.deleteRegion(r));
+	}
+	@Test
+	public void updateRegionTest() {
+		Region r = AccesData.getRegion("1");
+		r.setNomRegion("Alsace");
+		assertTrue(AccesData.updateRegion(r));
+	}
+	
+	@Test
+	public void updateUtilisateur() {
+		Utilisateur u = AccesData.getUtilisateur("a131");
+		u.setNom("Villechalane");
+		assertTrue(AccesData.updateUtilisateur(u));
+	}
+	
+	@Test
+	public void addDeleteUtilisateur() {
+		Region r = AccesData.getRegion("1");
+		Date uneDate = ConvertDate.toDate("2024-01-01");
+		Utilisateur u = new Utilisateur("py1", 'C', "Halleguen", "Pierre", uneDate, r);
+		assertTrue(AccesData.addUtilisateur(u));
+		assertTrue(AccesData.deleteUtilisateur(u));
+	}
 
 
 }
