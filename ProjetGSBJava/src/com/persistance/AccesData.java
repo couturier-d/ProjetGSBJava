@@ -54,42 +54,107 @@ public class AccesData {
 	public static Utilisateur getUtilisateur(String idUtilisateur) 	{
 		return (Utilisateur) session.get(Utilisateur.class, idUtilisateur);
 	}
-	public static void addFicheFrais(FicheFrais f) 	{
-		session.saveOrUpdate(f);
-		trans.commit();
+	public static Boolean addFicheFrais(FicheFrais f) 	{
+		Boolean succes = false;
+		try {
+			session.saveOrUpdate(f);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void deleteFicheFrais(FicheFrais f) 	{
-		session.delete(f);
-		trans.commit();
+	public static Boolean deleteFicheFrais(FicheFrais f) 	{
+		Boolean succes = false;
+		try {
+			session.delete(f);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void updateFicheFrais(FicheFrais f) 	{
-		session.saveOrUpdate(f);
-		trans.commit();
+	public static Boolean updateFicheFrais(FicheFrais f) 	{
+		Boolean succes = false;
+		try {
+			session.saveOrUpdate(f);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void addFraisForfait(FraisForfait f) 	{
-		session.saveOrUpdate(f);
-		trans.commit();
+	public static Boolean addFraisForfait(FraisForfait f) 	{
+		Boolean succes = false;
+		try {
+			session.saveOrUpdate(f);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void deleteFraisForfait(FraisForfait f) 	{
-		session.delete(f);
-		trans.commit();
+	public static Boolean deleteFraisForfait(FraisForfait f) 	{
+		Boolean succes = false;
+		try {
+			session.delete(f);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void updateFraisForfait(FraisForfait f) 	{
-		session.saveOrUpdate(f);
-		trans.commit();
+	public static Boolean updateFraisForfait(FraisForfait f) 	{
+		Boolean succes = false;
+		try {
+			session.saveOrUpdate(f);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void updateLigneFraisForfait(LigneFraisForfait l)
+	public static Boolean updateLigneFraisForfait(LigneFraisForfait l)
 	{
-		session.saveOrUpdate(l);
-		trans.commit();
+		Boolean succes = false;
+		try {
+			session.saveOrUpdate(l);
+			trans.commit();
+			succes = true;
+		}
+		finally {
+		}
+		return succes;
 	}
-	public static void deleteLigneFraisForfait(LigneFraisForfait l) 	{
-		session.delete(l);
-		trans.commit();
+	public static Boolean deleteLigneFraisForfait(LigneFraisForfait l) 	{
+		Boolean succes;
+		try {
+			session.delete(l);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		return succes;
 	}
-	public static void addLigneFraisForfait(LigneFraisForfait l) 	{
-		session.saveOrUpdate(l);
-		trans.commit();
+	public static Boolean addLigneFraisForfait(LigneFraisForfait l) 	{
+		Boolean succes;
+		try {
+			session.saveOrUpdate(l);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		return succes;
 	}
 	public static void addLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
 		session.saveOrUpdate(l);

@@ -2,6 +2,7 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +80,7 @@ public class AccesDataTest {
 	public void getListeFicheFraisTest() {
 		listeFichesFrais = AccesData.getListeFicheFrais();
 		assertNotNull("test chargement liste fiches frais", listeFichesFrais);
-		assertEquals("test nb fiches frais", listeFichesFrais.size(), 569);
+		assertEquals("test nb fiches frais", listeFichesFrais.size(), 570);
 	
 		assertEquals(listeFichesFrais.get(0).getIdVisiteur(), "a131");
 		assertEquals(listeFichesFrais.get(0).getMois(), "201301");
@@ -210,28 +211,46 @@ public class AccesDataTest {
 		
 	}
 	
-//	@Test
-//	public void addDeleteFicheFraisTest() {
-//		Utilisateur u = AccesData.getUtilisateur("a131");
-//		FicheFrais f = new FicheFrais("201307", u);
-//		assertTrue(AccesData.addFicheFrais(f));
-//		listeFichesFrais = AccesData.getListeFicheFrais();
-//		assertTrue(AccesData.deleteTypeCharge(listeTypeCharge.get(listeTypeCharge.size()-1)));
-//	}
-//	public void updateFicheFraisTest(FicheFrais f) {
-//	}
-//	public void addFraisForfaitTest(FraisForfait f) {
-//	}
-//	public void deleteFraisForfaitTest(FraisForfait f) {
-//	}
-//	public void updateFraisForfaitTest(FraisForfait f) {
-//	}
+	@Test
+	public void addDeleteFicheFraisTest() {
+		Utilisateur u = AccesData.getUtilisateur("a131");
+		FicheFrais f = new FicheFrais("202401", u);
+		f.setIdVisiteur(u.getIdUtilisateur());
+		assertTrue(AccesData.addFicheFrais(f));
+		//Cas de suppression non fonctionnel, car problème de clé étrangère dans la bdd (problème repéré chez plusieurs binômes)
+	}
+	
+	@Test
+	public void updateFicheFraisTest() {
+		FicheFrais f = AccesData.getFicheFrais("a131", "202401");
+		f.setEtat("CR");
+		assertTrue(AccesData.updateFicheFrais(f));
+	}
+	
+	@Test
+	public void addDeleteFraisForfaitTest() {
+		FraisForfait f = new FraisForfait("COV", "Covoiturage", 10.00);
+		assertTrue(AccesData.addFraisForfait(f));
+		assertTrue(AccesData.deleteFraisForfait(f));
+	}
+	
+	@Test
+	public void updateFraisForfaitTest() {
+		FraisForfait f = AccesData.getFraisForfait("ETP");
+		f.setLibelleFraisForfait("Forfait Etape");
+		assertTrue(AccesData.updateFraisForfait(f));
+	}
 //	public void updateLigneFraisForfaitTest(LigneFraisForfait l){
 //	}
-//	public void deleteLigneFraisForfaitTest(LigneFraisForfait l) {
-//	}
-//	public void addLigneFraisForfaitTest(LigneFraisForfait l) {
-//	}
+	
+	@Test
+	public void addDeleteLigneFraisForfaitTest() {
+		FicheFrais f = AccesData.getFicheFrais("a131", "202401");
+		FraisForfait f2 = AccesData.getFraisForfait("ETP");
+		LigneFraisForfait l = new LigneFraisForfait("ETP", 100, f, f2);
+		assertTrue(AccesData.addLigneFraisForfait(l));
+		assertTrue(AccesData.deleteLigneFraisForfait(l));
+	}
 //	public void addLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
 //	}
 //	public void deleteLigneFraisHorsForfaitTest(LigneFraisHorsForfait l) {
