@@ -9,7 +9,7 @@ import org.hibernate.*;
 public class AccesData {
 	
 	private static Session session = HibernateSession.getSession();
-	private static Transaction trans = session.beginTransaction();
+	private static Transaction trans;
 	// accesseurs sur listes d'objets
 	public static List<FicheFrais> getListeFicheFrais() 	{
 		return session.createQuery("from FicheFrais").list();
@@ -54,98 +54,130 @@ public class AccesData {
 	public static Utilisateur getUtilisateur(String idUtilisateur) 	{
 		return (Utilisateur) session.get(Utilisateur.class, idUtilisateur);
 	}
-	public static Boolean addFicheFrais(FicheFrais f) 	{
-		Boolean succes = false;
+	public static Boolean addFicheFrais(FicheFrais laFicheFrais) 	{
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
-			session.saveOrUpdate(f);
+			session.saveOrUpdate(laFicheFrais);
 			trans.commit();
 			succes = true;
 		}
-		finally {
+		catch(Exception exp) {
+			System.out.println(exp);
+			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean deleteFicheFrais(FicheFrais f) 	{
-		Boolean succes = false;
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
 			session.delete(f);
 			trans.commit();
 			succes = true;
 		}
-		finally {
+		catch(Exception exp) {
+			System.out.println(exp);
+			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean updateFicheFrais(FicheFrais f) 	{
-		Boolean succes = false;
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
 			session.saveOrUpdate(f);
 			trans.commit();
 			succes = true;
 		}
-		finally {
+		catch(Exception exp) {
+			System.out.println(exp);
+			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean addFraisForfait(FraisForfait f) 	{
-		Boolean succes = false;
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
 			session.saveOrUpdate(f);
 			trans.commit();
 			succes = true;
 		}
-		finally {
-		}
+			catch(Exception exp) {
+				System.out.println(exp);
+				succes = false;
+			}
+			session.clear();
 		return succes;
 	}
 	public static Boolean deleteFraisForfait(FraisForfait f) 	{
-		Boolean succes = false;
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
 			session.delete(f);
 			trans.commit();
 			succes = true;
 		}
-		finally {
+		catch(Exception exp) {
+			System.out.println(exp);
+			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean updateFraisForfait(FraisForfait f) 	{
-		Boolean succes = false;
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
 			session.saveOrUpdate(f);
 			trans.commit();
 			succes = true;
 		}
-		finally {
+		catch(Exception exp) {
+			System.out.println(exp);
+			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean updateLigneFraisForfait(LigneFraisForfait l)
 	{
-		Boolean succes = false;
+		trans = session.beginTransaction();
+		Boolean succes;
 		try {
 			session.saveOrUpdate(l);
 			trans.commit();
 			succes = true;
 		}
-		finally {
+		catch(Exception exp) {
+			System.out.println(exp);
+			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean deleteLigneFraisForfait(LigneFraisForfait l) 	{
 		Boolean succes;
+		trans = session.beginTransaction();
 		try {
 			session.delete(l);
 			trans.commit();
 			succes = true;
 		}
 		catch(Exception exp) {
+			System.out.println(exp);
 			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static Boolean addLigneFraisForfait(LigneFraisForfait l) 	{
 		Boolean succes;
+		trans = session.beginTransaction();
 		try {
 			session.saveOrUpdate(l);
 			trans.commit();
@@ -154,6 +186,7 @@ public class AccesData {
 		catch(Exception exp) {
 			succes = false;
 		}
+		session.clear();
 		return succes;
 	}
 	public static void addLigneFraisHorsForfait(LigneFraisHorsForfait l) 	{
