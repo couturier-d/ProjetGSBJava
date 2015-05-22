@@ -59,6 +59,7 @@ public class LigneFraisForfaitPK implements java.io.Serializable {
 		}
 		return resultat;
 	}
+	
 	public int hashCode() {
 		return (idVisiteur + mois).hashCode();
 	}

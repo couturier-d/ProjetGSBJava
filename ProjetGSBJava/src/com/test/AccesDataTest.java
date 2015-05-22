@@ -55,25 +55,25 @@ public class AccesDataTest {
 		listeUtilisateur = AccesData.getListeUtilisateur();
 		//Date dateembauche = ConvertDate.toDate("21/12/2005");
 		assertNotNull("test chargement liste utilisateurs", listeUtilisateur);
-		assertEquals("test nb utilisateurs", listeUtilisateur.size(), 27);
+		assertEquals("test nb utilisateurs", listeUtilisateur.size(), 28);
 		
 		
-		assertEquals(listeUtilisateur.get(0).getIdUtilisateur(), "a131");
-		assertEquals(listeUtilisateur.get(0).getIdTypeUtilisateur().toString(), "V");
-		assertEquals(listeUtilisateur.get(0).getNom(), "Villechalane");
-		assertEquals(listeUtilisateur.get(0).getPrenom(), "Louis");
-		assertEquals(listeUtilisateur.get(0).getLogin(), "lvillachane");
-		//assertEquals(listeUtilisateur.get(0).getDateEmbauche(), dateembauche);
-		assertEquals(listeUtilisateur.get(0).getRegion().getIdRegion(), "16");
-		assertEquals(listeUtilisateur.get(0).getRegion().getNomRegion(), "Midi-Pyrénées");
-		assertEquals(listeUtilisateur.get(1).getIdUtilisateur(), "a17");
+		assertEquals(listeUtilisateur.get(1).getIdUtilisateur(), "a131");
 		assertEquals(listeUtilisateur.get(1).getIdTypeUtilisateur().toString(), "V");
-		assertEquals(listeUtilisateur.get(1).getNom(), "Andre");
-		assertEquals(listeUtilisateur.get(1).getPrenom(), "David");
-		assertEquals(listeUtilisateur.get(1).getLogin(), "dandre");
-		//assertEquals(listeUtilisateur.get(1).getDateEmbauche(), ConvertDate.toDate("1998/11/23"));
+		assertEquals(listeUtilisateur.get(1).getNom(), "Villechalane");
+		assertEquals(listeUtilisateur.get(1).getPrenom(), "Louis");
+		assertEquals(listeUtilisateur.get(1).getLogin(), "lvillachane");
+		//assertEquals(listeUtilisateur.get(0).getDateEmbauche(), dateembauche);
 		assertEquals(listeUtilisateur.get(1).getRegion().getIdRegion(), "16");
 		assertEquals(listeUtilisateur.get(1).getRegion().getNomRegion(), "Midi-Pyrénées");
+		assertEquals(listeUtilisateur.get(2).getIdUtilisateur(), "a17");
+		assertEquals(listeUtilisateur.get(2).getIdTypeUtilisateur().toString(), "V");
+		assertEquals(listeUtilisateur.get(2).getNom(), "Andre");
+		assertEquals(listeUtilisateur.get(2).getPrenom(), "David");
+		assertEquals(listeUtilisateur.get(2).getLogin(), "dandre");
+		//assertEquals(listeUtilisateur.get(1).getDateEmbauche(), ConvertDate.toDate("1998/11/23"));
+		assertEquals(listeUtilisateur.get(2).getRegion().getIdRegion(), "16");
+		assertEquals(listeUtilisateur.get(2).getRegion().getNomRegion(), "Midi-Pyrénées");
 	}
 	
 	
@@ -277,7 +277,7 @@ public class AccesDataTest {
 	
 	@Test
 	public void addDeleteRegionTest() {
-		Region r = new Region("100", "Saint-Louis");
+		Region r = new Region("99", "Saint-Louis");
 		assertTrue(AccesData.addRegion(r));
 		assertTrue(AccesData.deleteRegion(r));
 	}

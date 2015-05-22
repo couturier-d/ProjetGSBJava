@@ -69,6 +69,14 @@ public class LigneFraisForfait {
 		this.ficheFrais = ficheFrais;
 		this.fraisForfait = fraisForfait;
 	}
+	
+	public LigneFraisForfait(String idVisiteur, String mois, String idFraisForfait, int quantite) {
+		super();
+		this.idFraisForfait = idFraisForfait;
+		this.quantite = quantite;
+		this.idVisiteur = idVisiteur;
+		this.mois = mois;
+	}
 	/**
 	 * accesseur idFraisForfait
 	 * @return idFraisForfait
