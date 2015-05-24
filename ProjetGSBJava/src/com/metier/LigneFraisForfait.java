@@ -3,13 +3,11 @@ package com.metier;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Columns;
@@ -75,6 +73,38 @@ public class LigneFraisForfait {
 		this.idFraisForfait = idFraisForfait;
 		this.quantite = quantite;
 		this.idVisiteur = idVisiteur;
+		this.mois = mois;
+	}
+	
+	/**
+	 * Accesseur idVisiteur
+	 * @return idVisiteur
+	 */
+	public String getIdVisiteur() {
+		return idVisiteur;
+	}
+	
+	/**
+	 * Mutateur idVisiteur
+	 * @param idVisiteur
+	 */
+	public void setIdVisiteur(String idVisiteur) {
+		this.idVisiteur = idVisiteur;
+	}
+	
+	/**
+	 * Accesseur mois
+	 * @return mois
+	 */
+	public String getMois() {
+		return mois;
+	}
+	
+	/**
+	 * Mutateur mois
+	 * @param mois
+	 */
+	public void setMois(String mois) {
 		this.mois = mois;
 	}
 	/**

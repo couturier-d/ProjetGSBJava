@@ -3,10 +3,7 @@ package com.test;
 import static org.junit.Assert.*;
 
 import java.util.Date;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 
 import com.metier.FicheFrais;

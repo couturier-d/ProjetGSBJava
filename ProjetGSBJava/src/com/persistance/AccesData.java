@@ -1,9 +1,7 @@
 package com.persistance;
 import com.metier.*;
 import com.util.HibernateSession;
-
 import java.util.*;
-
 import org.hibernate.*;
 
 public class AccesData {
