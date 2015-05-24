@@ -51,6 +51,7 @@ public class MenuAppliRH extends JFrame {
 	private JLabel lblWelcome;
 	private JPanel panel_welcome;
 	private JPanel panel_logo;
+	private JPanel panel_principal;
 	
 
 	/**
@@ -122,11 +123,15 @@ public class MenuAppliRH extends JFrame {
 		prenomUtilisateur = "Pierre-Yves";
 		nomUtilisateur = "Halleguen";
 		estConnecte = true;
+		logoGsb = new ImageIcon(this.getClass().getResource("/gsbIcon.png")).getImage();
+		
+		panel_principal = new JPanel();
+		contentPane.add(panel_principal, BorderLayout.CENTER);
+		panel_principal.setLayout(new BorderLayout(0, 0));
 		
 		// Panel d'entête
 		panel_header = new JPanel();
-		contentPane.add(panel_header, BorderLayout.NORTH);
-		logoGsb = new ImageIcon(this.getClass().getResource("/gsbIcon.png")).getImage();
+		panel_principal.add(panel_header, BorderLayout.NORTH);
 		panel_header.setLayout(new BorderLayout(0, 0));
 		
 		lblLogoGsb = new JLabel("");
@@ -139,11 +144,10 @@ public class MenuAppliRH extends JFrame {
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_header.add(lblWelcome, BorderLayout.SOUTH);
 		lblWelcome.setVerticalAlignment(SwingConstants.BOTTOM);
-		panel_header.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel_logo, lblLogoGsb, panel_welcome, lblWelcome}));
 		
 		// Panel de contenu
 		panel_content = new JPanel();
-		contentPane.add(panel_content, BorderLayout.CENTER);
+		panel_principal.add(panel_content, BorderLayout.SOUTH);
 		
 		panel_welcome = new JPanel();
 		panel_content.add(panel_welcome);
@@ -152,6 +156,7 @@ public class MenuAppliRH extends JFrame {
 		panel_logo = new JPanel();
 		panel_content.add(panel_logo);
 		panel_logo.setLayout(new BoxLayout(panel_logo, BoxLayout.X_AXIS));
+		panel_header.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel_logo, lblLogoGsb, panel_welcome, lblWelcome}));
 		
 		if (estConnecte) {
 			lblWelcome.setText("Bienvenue, " + prenomUtilisateur + " " + nomUtilisateur);
