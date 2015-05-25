@@ -83,21 +83,23 @@ public class Utilisateur {
 	 * @param uneDateEmbauche
 	 * @param uneRegion
 	 */
-	public Utilisateur(String unIdUtilisateur, Character unIdTypeUtilisateur, String unNom, String unPrenom, Date uneDateEmbauche, Region uneRegion) {
+	public Utilisateur(String unIdUtilisateur, Character unIdTypeUtilisateur, String unNom, String unPrenom, Date uneDateEmbauche,
+						Region uneRegion, String unLogin, String unMdp, String unNumeroPortable, String unNumeroFixe,
+						String uneAdresseMail, String uneAdresse, String unCodePostal, String uneVille) {
 		super();
 		this.idUtilisateur = unIdUtilisateur;
 		this.idTypeUtilisateur = unIdTypeUtilisateur;
 		this.nom = unNom;
 		this.prenom = unPrenom;
-		this.login = null;
-		this.motDePasse = null;
-		this.adresse = null;
-		this.codePostal = null;
-		this.ville = null;
+		this.login = unLogin;
+		this.motDePasse = unMdp;
+		this.adresse = uneAdresse;
+		this.codePostal = unCodePostal;
+		this.ville = uneVille;
 		this.dateEmbauche = uneDateEmbauche;
-		this.numeroPortable = null;
-		this.numeroFixe = null;
-		this.adresseMail = null;
+		this.numeroPortable = unNumeroPortable;
+		this.numeroFixe = unNumeroFixe;
+		this.adresseMail = uneAdresseMail;
 		this.region = uneRegion;
 		this.listeFicheFrais = new ArrayList<FicheFrais>();
 	}
