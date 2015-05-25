@@ -17,9 +17,6 @@ import javax.swing.JMenuBar;
 import com.metier.Utilisateur;
 import com.persistance.AccesData;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 public class MenuAppliRH extends JFrame {
 
 	private JMenuBar menuBar;
@@ -28,24 +25,16 @@ public class MenuAppliRH extends JFrame {
 	private JMenuItem mntmQuitter;
 	private JMenuItem mntmListeUtilisateur;
 	private JMenuItem mntmAjoutUtilisateur;
+	private JMenuItem mntmModifUtilisateur;
 	private JPanel contentPane;
-	private JLabel lblLogoGsb;
 	
-	Image logoGsb;
-	
-	String prenomUtilisateur;
-	String nomUtilisateur;
-	char typeUtilisateur;
-	Boolean estConnecte;
+	public static String prenomUtilisateur;
+	public static String nomUtilisateur;
+	public static char typeUtilisateur;
+	public static Boolean estConnecte;
 	
 	List<Utilisateur> lesUtilisateurs;
-	private JLabel lblWelcome;
-	private JPanel sousPanel_contenuAppli;
-	private JPanel panel;
-	private JPanel sousPanel_entete;
-	private JPanel sousPanel_contenu;
 	
-
 	/**
 	 * Launch the application.
 	 */
@@ -68,13 +57,13 @@ public class MenuAppliRH extends JFrame {
 	public MenuAppliRH() {
 		setTitle("GSB | Gestion des ressources humaines");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1152, 660);
+		setBounds(100, 100, 1024, 512);
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		menuBar = new JMenuBar();
-		contentPane.add(menuBar, BorderLayout.NORTH);
+		setJMenuBar(menuBar);
 		
 		// Création Menu fichier
 		mnFichier = new JMenu("Fichier");
@@ -100,7 +89,7 @@ public class MenuAppliRH extends JFrame {
 		mnUtilisateurs.add(mntmListeUtilisateur);
 		
 			// Element Ajout Utilisateur
-		mntmAjoutUtilisateur = new JMenuItem("Ajout Utilisateurs");
+		mntmAjoutUtilisateur = new JMenuItem("Ajouter un utilisateur");
 		mntmAjoutUtilisateur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				affichageAjoutUtilisateur();
@@ -108,47 +97,34 @@ public class MenuAppliRH extends JFrame {
 		});
 		mnUtilisateurs.add(mntmAjoutUtilisateur);
 		
+		// Element Modifier Utilisateur
+		mntmModifUtilisateur = new JMenuItem("Modifier un utilisateur");
+		mntmModifUtilisateur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				affichageModifUtilisateur();
+			}
+		});
+		mnUtilisateurs.add(mntmModifUtilisateur);
+		
+		this.getContentPane().setLayout(null);
+		
 		
 		// Simulation utilisateur en attente de gestion de la connexion
-		typeUtilisateur = 'S';
-		prenomUtilisateur = "Pierre-Yves";
-		nomUtilisateur = "Halleguen";
+		
+		prenomUtilisateur = "Helene";
+		nomUtilisateur = "Moal";
+		typeUtilisateur = 'D';
 		estConnecte = true;
-		
-		sousPanel_contenuAppli = new JPanel();
-		contentPane.add(sousPanel_contenuAppli, BorderLayout.CENTER);
-		sousPanel_contenuAppli.setLayout(new BorderLayout(0, 0));
-		logoGsb = new ImageIcon(this.getClass().getResource("/gsbIcon.png")).getImage();
-		
-		sousPanel_entete = new JPanel();
-		sousPanel_contenuAppli.add(sousPanel_entete, BorderLayout.NORTH);
-		sousPanel_entete.setLayout(new BorderLayout(0, 0));
-		
-		lblLogoGsb = new JLabel("");
-		sousPanel_entete.add(lblLogoGsb, BorderLayout.NORTH);
-		lblLogoGsb.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogoGsb.setVerticalAlignment(SwingConstants.TOP);
-		lblLogoGsb.setIcon(new ImageIcon(logoGsb));
-		
-		lblWelcome = new JLabel("Welcome, utilisateur");
-		sousPanel_entete.add(lblWelcome, BorderLayout.CENTER);
-		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcome.setVerticalAlignment(SwingConstants.BOTTOM);
-		
-		sousPanel_contenu = new JPanel();
-		sousPanel_contenuAppli.add(sousPanel_contenu, BorderLayout.CENTER);
-		
-		if(estConnecte){
-			lblWelcome.setText("Bienvenue, " + prenomUtilisateur + " " + nomUtilisateur);
-		}
 		
 		switch(typeUtilisateur) {
 			case 'S':
 				lesUtilisateurs = AccesData.getListeUtilisateur();
 				menuBar.add(mnUtilisateurs);
+				affichageListeUtilisateurs();
 				break;
 			case 'D':
 				lesUtilisateurs = AccesData.getListeUtilisateur();
+				affichageListeUtilisateurs();
 				// A compléter
 				break;
 			case 'R':
@@ -160,25 +136,19 @@ public class MenuAppliRH extends JFrame {
 	// Pannels pour secrétaire
 	
 	private void affichageListeUtilisateurs() {
-		sousPanel_contenuAppli.remove(sousPanel_contenu);
-		sousPanel_contenu = new JPanel();
-		sousPanel_contenuAppli.add(sousPanel_contenu, BorderLayout.CENTER);
-		sousPanel_contenu.add(new PanelListeUtilisateurs(lesUtilisateurs), BorderLayout.CENTER);
+		this.setContentPane(new PanelListeUtilisateurs(lesUtilisateurs));
 		this.revalidate();
 	}
 	
 	private void affichageAjoutUtilisateur() {
-		sousPanel_contenuAppli.remove(sousPanel_contenu);
-		sousPanel_contenu = new JPanel();
-		sousPanel_contenuAppli.add(sousPanel_contenu, BorderLayout.CENTER);
-		sousPanel_contenu.add(new PanelAjoutUtilisateur(), BorderLayout.CENTER);
+		this.setContentPane(new PanelAjoutUtilisateur());
 		this.revalidate();
 	}
 	
-	/*private void affichageModifUtilisateur(Utilisateur unUtilisateur) {
-//		this.setContentPane(new PanelModifUtilisateur(unUtilisateur));
+	private void affichageModifUtilisateur() {
+		this.setContentPane(new PanelModifUtilisateur());
 		this.revalidate();
-	}*/
+	}
 	
 	// Pannels pour Directeur RH
 	
