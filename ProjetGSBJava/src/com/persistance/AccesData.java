@@ -27,6 +27,10 @@ public class AccesData {
 	public static List<Utilisateur> getListeUtilisateur() 	{
 		return session.createQuery("from Utilisateur").list();
 	}
+	
+	public static List<TypeUtilisateur> getListeTypeUtilisateur() 	{
+		return session.createQuery("from TypeUtilisateur").list();
+	}
 	public static FicheFrais getFicheFrais(String idVisiteur, String mois) 	{
 		FicheFraisPK ficheFraisPK = new FicheFraisPK();
 		ficheFraisPK.setIdVisiteur(idVisiteur);
@@ -51,6 +55,10 @@ public class AccesData {
 	}
 	public static Utilisateur getUtilisateur(String idUtilisateur) 	{
 		return (Utilisateur) session.get(Utilisateur.class, idUtilisateur);
+	}
+	
+	public static TypeUtilisateur getTypeUtilisateur(String idTypeUtilisateur) 	{
+		return (TypeUtilisateur) session.get(TypeUtilisateur.class, idTypeUtilisateur);
 	}
 	public static Boolean addFicheFrais(FicheFrais laFicheFrais) 	{
 		trans = session.beginTransaction();
@@ -305,6 +313,50 @@ public class AccesData {
 		trans = session.beginTransaction();
 		try {
 			session.saveOrUpdate(u);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
+	}
+	
+	public static Boolean updateTypeUtilisateur(TypeUtilisateur t)
+	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(t);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
+	}
+	public static Boolean deleteTypeUtilisateur(TypeUtilisateur t) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.delete(t);
+			trans.commit();
+			succes = true;
+		}
+		catch(Exception exp) {
+			succes = false;
+		}
+		session.clear();
+		return succes;
+	}
+	public static Boolean addTypeUtilisateur(TypeUtilisateur t) 	{
+		Boolean succes;
+		trans = session.beginTransaction();
+		try {
+			session.saveOrUpdate(t);
 			trans.commit();
 			succes = true;
 		}

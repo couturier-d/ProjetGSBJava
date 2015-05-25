@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 import java.util.List;
+
 import org.junit.Test;
 
 import com.metier.FicheFrais;
@@ -11,6 +12,7 @@ import com.metier.FraisForfait;
 import com.metier.LigneFraisForfait;
 import com.metier.LigneFraisHorsForfait;
 import com.metier.Region;
+import com.metier.TypeUtilisateur;
 import com.metier.Utilisateur;
 import com.persistance.AccesData;
 import com.util.ConvertDate;
@@ -25,6 +27,7 @@ public class AccesDataTest {
 	Utilisateur utilisateur;
 	
 	private List<Utilisateur> listeUtilisateur;
+	private List<TypeUtilisateur> listeTypeUtilisateur;
 	private List<Region> listeRegion;
 	
 	private static List<FicheFrais> listeFichesFrais;
@@ -71,6 +74,19 @@ public class AccesDataTest {
 		//assertEquals(listeUtilisateur.get(1).getDateEmbauche(), ConvertDate.toDate("1998/11/23"));
 		assertEquals(listeUtilisateur.get(2).getRegion().getIdRegion(), "16");
 		assertEquals(listeUtilisateur.get(2).getRegion().getNomRegion(), "Midi-Pyrénées");
+	}
+	
+	@Test
+	public void getListeTypeUtilisateurTest() {
+		listeTypeUtilisateur = AccesData.getListeTypeUtilisateur();
+		assertNotNull("test chargement liste utilisateurs", listeTypeUtilisateur);
+		assertEquals("test nb types utilisateur", listeTypeUtilisateur.size(), 5);
+		
+		
+		assertEquals(listeTypeUtilisateur.get(0).getIdType().toString(), "C");
+		assertEquals(listeTypeUtilisateur.get(0).getLibelleType(), "Comptable");
+		assertEquals(listeTypeUtilisateur.get(4).getIdType().toString(), "V");
+		assertEquals(listeTypeUtilisateur.get(4).getLibelleType(), "visiteur médical");
 	}
 	
 	
