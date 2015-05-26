@@ -31,7 +31,7 @@ public class PanelEnteteAppli extends JPanel {
 		lblWelcome.setVerticalAlignment(SwingConstants.BOTTOM);
 		
 		if(MenuAppliRH.estConnecte){
-			lblWelcome.setText("Bienvenue, " + MenuAppliRH.prenomUtilisateur + " " + MenuAppliRH.nomUtilisateur);
+			lblWelcome.setText("Bienvenue, " + MenuAppliRH.utilisateurConnecte.getPrenom() + " " + MenuAppliRH.utilisateurConnecte.getNom());
 		}
 	}
 }

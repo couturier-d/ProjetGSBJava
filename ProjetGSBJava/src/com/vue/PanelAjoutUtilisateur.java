@@ -43,7 +43,7 @@ public class PanelAjoutUtilisateur extends JPanel {
 	private JTextField txtVille;
 	private JComboBox<String> cbxTypeUtilisateur;
 	private JComboBox<String> cbxRegion;
-	private JPanel panel_entete;
+	private JPanel sousPanel_entete;
 	
 	private List<Utilisateur> listeUtilisateur;
 	private List<TypeUtilisateur> listeTypeUtilisateur;
@@ -53,162 +53,168 @@ public class PanelAjoutUtilisateur extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		setPreferredSize(new Dimension(768, 256));
 		
-		panel_entete = new JPanel();
-		add(panel_entete, BorderLayout.NORTH);
-		panel_entete.add(new PanelEnteteAppli());
+		sousPanel_entete = new JPanel();
+		add(sousPanel_entete, BorderLayout.NORTH);
+		sousPanel_entete.add(new PanelEnteteAppli());
 		
 		listeUtilisateur = AccesData.getListeUtilisateur();
 		listeTypeUtilisateur = AccesData.getListeTypeUtilisateur();
 		listeRegion = AccesData.getListeRegion();
 		
-		JPanel panel_contenu = new JPanel();
-		add(panel_contenu, BorderLayout.CENTER);
-		panel_contenu.setLayout(new BorderLayout(0, 0));
+		JPanel sousPanel_contenu = new JPanel();
+		add(sousPanel_contenu, BorderLayout.CENTER);
+		sousPanel_contenu.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_titre_contenu = new JPanel();
-		panel_contenu.add(panel_titre_contenu, BorderLayout.NORTH);
+		JPanel sousPanel_titre_contenu = new JPanel();
+		sousPanel_contenu.add(sousPanel_titre_contenu, BorderLayout.NORTH);
 		
 		JLabel lblFicheDuNouvel = new JLabel("Fiche du nouvel utilisateur :");
-		panel_titre_contenu.add(lblFicheDuNouvel);
+		sousPanel_titre_contenu.add(lblFicheDuNouvel);
 		
-		JPanel panel_formulaire_ajout = new JPanel();
-		panel_contenu.add(panel_formulaire_ajout, BorderLayout.CENTER);
-		panel_formulaire_ajout.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_formulaire_ajout.setLayout(new GridLayout(5, 2, 0, 0));
+		JPanel sousPanel_formulaire_ajout = new JPanel();
+		sousPanel_contenu.add(sousPanel_formulaire_ajout, BorderLayout.CENTER);
+		sousPanel_formulaire_ajout.setBorder(new LineBorder(new Color(0, 0, 0)));
+		sousPanel_formulaire_ajout.setLayout(new GridLayout(5, 2, 0, 0));
 		
-		JPanel panelTypeUtilisateur = new JPanel();
-		panel_formulaire_ajout.add(panelTypeUtilisateur);
-		panelTypeUtilisateur.setLayout(null);
+		JPanel sousPanelTypeUtilisateur = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelTypeUtilisateur);
+		sousPanelTypeUtilisateur.setLayout(null);
 		
 		JLabel lblTypeUtilisateur = new JLabel("Type utilisateur");
 		lblTypeUtilisateur.setBounds(10, 15, 100, 14);
-		panelTypeUtilisateur.add(lblTypeUtilisateur);
+		sousPanelTypeUtilisateur.add(lblTypeUtilisateur);
 		
 		cbxTypeUtilisateur = new JComboBox<String>();
 		cbxTypeUtilisateur.setBounds(150, 15, 150, 20);
-		panelTypeUtilisateur.add(cbxTypeUtilisateur);
+		sousPanelTypeUtilisateur.add(cbxTypeUtilisateur);
+		for(TypeUtilisateur t : listeTypeUtilisateur) {
+			cbxTypeUtilisateur.addItem(t.getLibelleType());
+		}
 		cbxTypeUtilisateur.setSelectedIndex(-1);
 		
-		JPanel panelRegion = new JPanel();
-		panel_formulaire_ajout.add(panelRegion);
-		panelRegion.setLayout(null);
+		JPanel sousPanelRegion = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelRegion);
+		sousPanelRegion.setLayout(null);
 		
 		JLabel lblRegion = new JLabel("Region");
 		lblRegion.setBounds(10, 15, 100, 14);
-		panelRegion.add(lblRegion);
+		sousPanelRegion.add(lblRegion);
 		
 		cbxRegion = new JComboBox<String>();
 		cbxRegion.setBounds(150, 15, 150, 20);
-		panelRegion.add(cbxRegion);
+		sousPanelRegion.add(cbxRegion);
+		for(Region r : listeRegion) {
+			cbxRegion.addItem(r.getNomRegion());
+		}
 		cbxRegion.setSelectedIndex(-1);
 		
-		JPanel panelNom = new JPanel();
-		panel_formulaire_ajout.add(panelNom);
-		panelNom.setLayout(null);
+		JPanel sousPanelNom = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelNom);
+		sousPanelNom.setLayout(null);
 		
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setBounds(10, 15, 100, 14);
-		panelNom.add(lblNom);
+		sousPanelNom.add(lblNom);
 		
 		txtNom = new JTextField();
 		txtNom.setBounds(150, 15, 100, 20);
-		panelNom.add(txtNom);
+		sousPanelNom.add(txtNom);
 		txtNom.setColumns(10);
 		
-		JPanel panelPrenom = new JPanel();
-		panel_formulaire_ajout.add(panelPrenom);
-		panelPrenom.setLayout(null);
+		JPanel sousPanelPrenom = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelPrenom);
+		sousPanelPrenom.setLayout(null);
 		
 		JLabel lblPrenom = new JLabel("Pr\u00E9nom");
 		lblPrenom.setBounds(10, 15, 100, 14);
-		panelPrenom.add(lblPrenom);
+		sousPanelPrenom.add(lblPrenom);
 		
 		txtPrenom = new JTextField();
 		txtPrenom.setBounds(150, 15, 100, 20);
-		panelPrenom.add(txtPrenom);
+		sousPanelPrenom.add(txtPrenom);
 		txtPrenom.setColumns(10);
 		
-		JPanel panelAdresse = new JPanel();
-		panel_formulaire_ajout.add(panelAdresse);
-		panelAdresse.setLayout(null);
+		JPanel sousPanelAdresse = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelAdresse);
+		sousPanelAdresse.setLayout(null);
 		
 		JLabel lblAdresse = new JLabel("Adresse");
 		lblAdresse.setBounds(10, 15, 100, 14);
-		panelAdresse.add(lblAdresse);
+		sousPanelAdresse.add(lblAdresse);
 		
 		txtAdresse = new JTextField();
 		txtAdresse.setBounds(150, 15, 100, 20);
-		panelAdresse.add(txtAdresse);
+		sousPanelAdresse.add(txtAdresse);
 		txtAdresse.setColumns(10);
 		
-		JPanel panelVille = new JPanel();
-		panel_formulaire_ajout.add(panelVille);
-		panelVille.setLayout(null);
+		JPanel sousPanelVille = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelVille);
+		sousPanelVille.setLayout(null);
 		
 		JLabel lblVille = new JLabel("Ville");
 		lblVille.setBounds(10, 15, 100, 14);
-		panelVille.add(lblVille);
+		sousPanelVille.add(lblVille);
 		
 		txtVille = new JTextField();
 		txtVille.setBounds(150, 15, 100, 20);
-		panelVille.add(txtVille);
+		sousPanelVille.add(txtVille);
 		txtVille.setColumns(10);
 		
-		JPanel panelDateEmbauche = new JPanel();
-		panel_formulaire_ajout.add(panelDateEmbauche);
-		panelDateEmbauche.setLayout(null);
+		JPanel sousPanelDateEmbauche = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelDateEmbauche);
+		sousPanelDateEmbauche.setLayout(null);
 		
 		JLabel lblDateEmbauche = new JLabel("Date d'embauche *");
 		lblDateEmbauche.setBounds(10, 15, 120, 14);
-		panelDateEmbauche.add(lblDateEmbauche);
+		sousPanelDateEmbauche.add(lblDateEmbauche);
 		
 		txtDateEmbauche = new JTextField();
 		txtDateEmbauche.setBounds(150, 15, 100, 20);
-		panelDateEmbauche.add(txtDateEmbauche);
+		sousPanelDateEmbauche.add(txtDateEmbauche);
 		txtDateEmbauche.setColumns(10);
 		
-		JPanel panelCodePostal = new JPanel();
-		panel_formulaire_ajout.add(panelCodePostal);
-		panelCodePostal.setLayout(null);
+		JPanel sousPanelCodePostal = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelCodePostal);
+		sousPanelCodePostal.setLayout(null);
 		
 		JLabel lblCodePostal = new JLabel("Code Postal");
 		lblCodePostal.setBounds(10, 15, 100, 14);
-		panelCodePostal.add(lblCodePostal);
+		sousPanelCodePostal.add(lblCodePostal);
 		
 		txtCodePostal = new JTextField();
 		txtCodePostal.setBounds(150, 15, 100, 20);
-		panelCodePostal.add(txtCodePostal);
+		sousPanelCodePostal.add(txtCodePostal);
 		txtCodePostal.setColumns(10);
 		
-		JPanel panelNumFixe = new JPanel();
-		panel_formulaire_ajout.add(panelNumFixe);
-		panelNumFixe.setLayout(null);
+		JPanel sousPanelNumFixe = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelNumFixe);
+		sousPanelNumFixe.setLayout(null);
 		
 		JLabel lblNumFixe = new JLabel("N\u00B0 Fixe *");
 		lblNumFixe.setBounds(10, 15, 100, 14);
-		panelNumFixe.add(lblNumFixe);
+		sousPanelNumFixe.add(lblNumFixe);
 		
 		txtNumFixe = new JTextField();
 		txtNumFixe.setBounds(150, 15, 100, 20);
-		panelNumFixe.add(txtNumFixe);
+		sousPanelNumFixe.add(txtNumFixe);
 		txtNumFixe.setColumns(10);
 		
-		JPanel panelNumPortable = new JPanel();
-		panel_formulaire_ajout.add(panelNumPortable);
-		panelNumPortable.setLayout(null);
+		JPanel sousPanelNumPortable = new JPanel();
+		sousPanel_formulaire_ajout.add(sousPanelNumPortable);
+		sousPanelNumPortable.setLayout(null);
 		
 		JLabel lblNumPortable = new JLabel("N\u00B0 Portable *");
 		lblNumPortable.setBounds(10, 15, 100, 14);
-		panelNumPortable.add(lblNumPortable);
+		sousPanelNumPortable.add(lblNumPortable);
 		
 		txtNumPortable = new JTextField();
 		txtNumPortable.setBounds(150, 15, 100, 20);
-		panelNumPortable.add(txtNumPortable);
+		sousPanelNumPortable.add(txtNumPortable);
 		txtNumPortable.setColumns(10);
 		
-		JPanel panel_boutons_formulaire = new JPanel();
-		panel_contenu.add(panel_boutons_formulaire, BorderLayout.SOUTH);
-		panel_boutons_formulaire.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JPanel sousPanel_boutons_formulaire = new JPanel();
+		sousPanel_contenu.add(sousPanel_boutons_formulaire, BorderLayout.SOUTH);
+		sousPanel_boutons_formulaire.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
@@ -216,11 +222,11 @@ public class PanelAjoutUtilisateur extends JPanel {
 				valider();
 			}
 		});
-		panel_boutons_formulaire.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		sousPanel_boutons_formulaire.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblSansEspaces = new JLabel("* Sans espaces.        ** Au format aaaa-mm-jj        ");
-		panel_boutons_formulaire.add(lblSansEspaces);
-		panel_boutons_formulaire.add(btnValider);
+		sousPanel_boutons_formulaire.add(lblSansEspaces);
+		sousPanel_boutons_formulaire.add(btnValider);
 		
 		JButton btnEffacer = new JButton("Effacer");
 		btnEffacer.addActionListener(new ActionListener() {
@@ -228,15 +234,7 @@ public class PanelAjoutUtilisateur extends JPanel {
 				reinitialiserFormulaire();
 			}
 		});
-		panel_boutons_formulaire.add(btnEffacer);
-		
-		for(TypeUtilisateur t : listeTypeUtilisateur) {
-			cbxTypeUtilisateur.addItem(t.getLibelleType());
-		}
-		
-		for(Region r : listeRegion) {
-			cbxRegion.addItem(r.getNomRegion());
-		}
+		sousPanel_boutons_formulaire.add(btnEffacer);
 	}
 	
 	public Boolean verifierChaine(String laChaine) {

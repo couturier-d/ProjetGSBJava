@@ -9,6 +9,8 @@ import com.persistance.AccesData;
 
 public class GenerationDonneesUtilisateur {
 	public static String genererLogin(String unNom, String unPrenom) {
+			unNom = unNom.toLowerCase();
+			unPrenom.toLowerCase();
 			String[] prenom = unPrenom.split(" ");
 			String prenomAbrege = "";
 			
@@ -68,9 +70,8 @@ public class GenerationDonneesUtilisateur {
 	}
 	
 	public static String genererAdresseMail(String unNom, String unPrenom) {
-		String adresseMail = unNom + "." + unPrenom + "@gsb.fr";
+		String adresseMail = unNom.toLowerCase() + "." + unPrenom.toLowerCase() + "@gsb.fr";
 		System.out.println("Génération d'un e-mail : " + adresseMail);
 		return adresseMail;
 	}
-
 }

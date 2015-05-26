@@ -2,12 +2,10 @@ package com.vue;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -31,9 +29,7 @@ public class MenuAppliRH extends JFrame {
 	private JMenuItem mntmStatsMois;
 	private JPanel contentPane;
 	
-	public static String prenomUtilisateur;
-	public static String nomUtilisateur;
-	public static char typeUtilisateur;
+	public static Utilisateur utilisateurConnecte;
 	public static Boolean estConnecte;
 	
 	List<Utilisateur> lesUtilisateurs;
@@ -58,6 +54,7 @@ public class MenuAppliRH extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuAppliRH() {
+		estConnecte = false;
 		setTitle("GSB | Gestion des ressources humaines");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 512);
@@ -131,28 +128,29 @@ public class MenuAppliRH extends JFrame {
 			}
 		});
 		mnStats.add(mntmStatsMois);
-		
-		// Simulation utilisateur en attente de gestion de la connexion
-		
-		prenomUtilisateur = "Helene";
-		nomUtilisateur = "Moal";
-		typeUtilisateur = 'S';
-		estConnecte = true;
-		
-		switch(typeUtilisateur) {
-			case 'S':
+		if (estConnecte) {
+			switch(utilisateurConnecte.getIdUtilisateur()) {
+			case "S":
 				lesUtilisateurs = AccesData.getListeUtilisateur();
 				menuBar.add(mnUtilisateurs);
 				affichageListeUtilisateurs();
 				break;
-			case 'D':
+			case "D":
 				lesUtilisateurs = AccesData.getListeUtilisateur();
 				affichageListeUtilisateurs();
 				break;
-			case 'R':
+			case "R":
 				affichageStatsRegionMois();
 				break;
+			}
+		} else {
+			affichageIdentification();
 		}
+	}
+	
+	private void affichageIdentification() {
+		this.setContentPane(new PanelIdentification());
+		this.revalidate();
 	}
 	
 	// Panels pour secrétaire

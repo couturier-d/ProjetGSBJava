@@ -68,12 +68,13 @@ public class PanelListeUtilisateurs extends JPanel {
 		table = new JTable(modele);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(150);
-		table.getColumnModel().getColumn(1).setPreferredWidth(150);
-		table.getColumnModel().getColumn(2).setPreferredWidth(75);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(2).setPreferredWidth(150);
 		table.getColumnModel().getColumn(3).setPreferredWidth(75);
-		table.getColumnModel().getColumn(4).setPreferredWidth(250);
-		table.getColumnModel().getColumn(5).setPreferredWidth(80);
-		table.getColumnModel().getColumn(6).setPreferredWidth(200);
+		table.getColumnModel().getColumn(4).setPreferredWidth(75);
+		table.getColumnModel().getColumn(5).setPreferredWidth(250);
+		table.getColumnModel().getColumn(6).setPreferredWidth(80);
+		table.getColumnModel().getColumn(7).setPreferredWidth(200);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(54, 121, 1024, 256);
