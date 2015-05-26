@@ -94,6 +94,8 @@ public class PanelStatsRegionMois extends JPanel {
 			}
 		});
 		
+		sousPanel_recherche.add(btnRechercher);
+		
 		JPanel sousPanel_resultat = new JPanel();
 		panel_contenu.add(sousPanel_resultat, BorderLayout.SOUTH);
 		sousPanel_resultat.setBorder(new LineBorder(new Color(0, 0, 0)));
