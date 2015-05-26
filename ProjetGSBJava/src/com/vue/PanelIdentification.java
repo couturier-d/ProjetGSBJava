@@ -53,7 +53,7 @@ public class PanelIdentification extends JPanel {
 		this.sousPanel_contenu.add(this.lblTitre);
 		
 		this.sousPanelLogin = new JPanel();
-		this.sousPanelLogin.setBounds(100, 100, 250, 30);
+		this.sousPanelLogin.setBounds(100, 100, 300, 30);
 		this.sousPanel_contenu.add(this.sousPanelLogin);
 		
 		this.lblLogin = new JLabel("Login :");
@@ -64,7 +64,7 @@ public class PanelIdentification extends JPanel {
 		this.txtLogin.setColumns(10);
 		
 		this.sousPanelMdp = new JPanel();
-		this.sousPanelMdp.setBounds(100, 150, 250, 60);
+		this.sousPanelMdp.setBounds(100, 150, 300, 60);
 		this.sousPanel_contenu.add(this.sousPanelMdp);
 		
 		this.lblMdp = new JLabel("Mot de passe :");
