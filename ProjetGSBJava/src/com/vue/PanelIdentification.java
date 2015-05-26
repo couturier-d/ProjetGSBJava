@@ -4,10 +4,14 @@ import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Window;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.SwingUtilities;
 
 import java.awt.Font;
 
@@ -31,6 +35,7 @@ public class PanelIdentification extends JPanel {
 	private JPanel sousPanelLogin;
 	private JPanel sousPanelMdp;
 	private JButton btnValider;
+	private JOptionPane alert = new JOptionPane();
 	
 	private List<Utilisateur> listeUtilisateur;
 	
@@ -92,15 +97,40 @@ public class PanelIdentification extends JPanel {
 		String mdp = passwordField.getText();
 		
 		while((trouve == false) && (index < listeUtilisateur.size())) {
-			if ((listeUtilisateur.get(index).getLogin().equals(login)) && (listeUtilisateur.get(index).getMotDePasse().equals(mdp))) {
-				System.out.println("Identifiants valides !");
-				trouve = true;
-				MenuAppliRH.estConnecte = true;
-				MenuAppliRH.utilisateurConnecte = listeUtilisateur.get(index);
-			} else {
-				System.out.println("Identifiants invalides !");
+			// Recherche utilisateur correspondant au login
+			if (listeUtilisateur.get(index).getLogin().equals(login)) {
+				// Vérification du bon type d'utilisateur
+				if ((listeUtilisateur.get(index).getIdTypeUtilisateur().toString().equals("S")) || (listeUtilisateur.get(index).getIdTypeUtilisateur().toString().equals("D")) 
+						|| (listeUtilisateur.get(index).getIdTypeUtilisateur().toString().equals("R"))) {
+					// Vérification du mot de passe
+					if (listeUtilisateur.get(index).getMotDePasse().equals(mdp)) {
+						System.out.println("Identifiants valides.");
+						trouve = true;
+						MenuAppliRH.estConnecte = true;
+						MenuAppliRH.utilisateurConnecte = listeUtilisateur.get(index);
+						redirection();
+					} else {
+						JOptionPane.showMessageDialog(this, "Mot de passe incorrect !", "Accès refusé", JOptionPane.ERROR_MESSAGE);
+						System.out.println("Mot de passe incorrecte !");
+					}
+				} else {
+					JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à utiliser cette application !", "Accès refusé", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Accès refusé. Vous n'êtes aps autorisé à utiliser cette application !");
+				}
 			}
 			index++;
+		}
+		if (trouve == false) {
+			JOptionPane.showMessageDialog(this, "Cet utilisateur n'existe pas !", "Accès refusé", JOptionPane.ERROR_MESSAGE);
+			System.out.println("Cet utilisateur n'existe pas !");
+		}
+	}
+	public void redirection() {
+		Window window = SwingUtilities.windowForComponent(this);
+		if (window instanceof JFrame) {
+			JFrame frame = (JFrame) window;
+	 
+			((MenuAppliRH) frame).redirection();
 		}
 	}
 }

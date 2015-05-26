@@ -128,15 +128,18 @@ public class MenuAppliRH extends JFrame {
 			}
 		});
 		mnStats.add(mntmStatsMois);
+		
+		redirection();
+	}
+	
+	public void redirection() {
 		if (estConnecte) {
-			switch(utilisateurConnecte.getIdUtilisateur()) {
+			switch(utilisateurConnecte.getIdTypeUtilisateur().toString()) {
 			case "S":
-				lesUtilisateurs = AccesData.getListeUtilisateur();
 				menuBar.add(mnUtilisateurs);
 				affichageListeUtilisateurs();
 				break;
 			case "D":
-				lesUtilisateurs = AccesData.getListeUtilisateur();
 				affichageListeUtilisateurs();
 				break;
 			case "R":
@@ -156,8 +159,7 @@ public class MenuAppliRH extends JFrame {
 	// Panels pour secrétaire
 	
 	private void affichageListeUtilisateurs() {
-		lesUtilisateurs = AccesData.getListeUtilisateur();
-		this.setContentPane(new PanelListeUtilisateurs(lesUtilisateurs));
+		this.setContentPane(new PanelListeUtilisateurs());
 		this.revalidate();
 	}
 	

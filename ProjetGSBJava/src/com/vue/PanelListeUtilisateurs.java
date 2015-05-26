@@ -37,12 +37,12 @@ public class PanelListeUtilisateurs extends JPanel {
 	
 	private List<Utilisateur> listeUtilisateurs;
 	
-	public PanelListeUtilisateurs(List<Utilisateur> lesUtilisateurs) {
+	public PanelListeUtilisateurs() {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new BorderLayout(0, 0));
 		setPreferredSize(new Dimension(1024, 512));
 		
-		listeUtilisateurs = lesUtilisateurs;
+		listeUtilisateurs = AccesData.getListeUtilisateur();
 		
 		JPanel panel_entete = new JPanel();
 		add(panel_entete, BorderLayout.NORTH);
