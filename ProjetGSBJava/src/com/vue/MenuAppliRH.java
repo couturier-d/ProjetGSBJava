@@ -143,6 +143,7 @@ public class MenuAppliRH extends JFrame {
 				affichageListeUtilisateurs();
 				break;
 			case "R":
+				menuBar.add(mnStats);
 				affichageStatsRegionMois();
 				break;
 			}
