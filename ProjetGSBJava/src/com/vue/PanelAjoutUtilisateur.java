@@ -43,6 +43,7 @@ public class PanelAjoutUtilisateur extends JPanel {
 	private JTextField txtVille;
 	private JComboBox<String> cbxTypeUtilisateur;
 	private JComboBox<String> cbxRegion;
+	private JPanel panel_entete;
 	
 	private List<Utilisateur> listeUtilisateur;
 	private List<TypeUtilisateur> listeTypeUtilisateur;
@@ -52,7 +53,7 @@ public class PanelAjoutUtilisateur extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		setPreferredSize(new Dimension(768, 256));
 		
-		JPanel panel_entete = new JPanel();
+		panel_entete = new JPanel();
 		add(panel_entete, BorderLayout.NORTH);
 		panel_entete.add(new PanelEnteteAppli());
 		

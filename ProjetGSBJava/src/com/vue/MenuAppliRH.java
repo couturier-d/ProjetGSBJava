@@ -121,7 +121,7 @@ public class MenuAppliRH extends JFrame {
 				affichageStatsRegionMois();
 			}
 		});
-		mnUtilisateurs.add(mntmStatsRegionMois);
+		mnStats.add(mntmStatsRegionMois);
 		
 			// Element Stats par mois
 		mntmStatsMois = new JMenuItem("Statistiques par mois");
@@ -130,7 +130,7 @@ public class MenuAppliRH extends JFrame {
 				affichageStatsMois();
 			}
 		});
-		mnUtilisateurs.add(mntmStatsMois);
+		mnStats.add(mntmStatsMois);
 		
 		// Simulation utilisateur en attente de gestion de la connexion
 		
@@ -158,6 +158,7 @@ public class MenuAppliRH extends JFrame {
 	// Panels pour secrétaire
 	
 	private void affichageListeUtilisateurs() {
+		lesUtilisateurs = AccesData.getListeUtilisateur();
 		this.setContentPane(new PanelListeUtilisateurs(lesUtilisateurs));
 		this.revalidate();
 	}
