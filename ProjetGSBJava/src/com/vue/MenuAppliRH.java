@@ -22,10 +22,13 @@ public class MenuAppliRH extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnFichier;
 	private JMenu mnUtilisateurs;
+	private JMenu mnStats;
 	private JMenuItem mntmQuitter;
 	private JMenuItem mntmListeUtilisateur;
 	private JMenuItem mntmAjoutUtilisateur;
 	private JMenuItem mntmModifUtilisateur;
+	private JMenuItem mntmStatsRegionMois;
+	private JMenuItem mntmStatsMois;
 	private JPanel contentPane;
 	
 	public static String prenomUtilisateur;
@@ -108,12 +111,32 @@ public class MenuAppliRH extends JFrame {
 		
 		this.getContentPane().setLayout(null);
 		
+		// Création menu Stats
+		mnStats = new JMenu("Statistiques");
+		
+			// Element Stats par région et par mois
+		mntmStatsRegionMois = new JMenuItem("Statistiques par région et par mois");
+		mntmStatsRegionMois.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				affichageStatsRegionMois();
+			}
+		});
+		mnUtilisateurs.add(mntmStatsRegionMois);
+		
+			// Element Stats par mois
+		mntmStatsMois = new JMenuItem("Statistiques par mois");
+		mntmStatsMois.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				affichageStatsMois();
+			}
+		});
+		mnUtilisateurs.add(mntmStatsMois);
 		
 		// Simulation utilisateur en attente de gestion de la connexion
 		
 		prenomUtilisateur = "Helene";
 		nomUtilisateur = "Moal";
-		typeUtilisateur = 'D';
+		typeUtilisateur = 'S';
 		estConnecte = true;
 		
 		switch(typeUtilisateur) {
@@ -125,15 +148,14 @@ public class MenuAppliRH extends JFrame {
 			case 'D':
 				lesUtilisateurs = AccesData.getListeUtilisateur();
 				affichageListeUtilisateurs();
-				// A compléter
 				break;
 			case 'R':
-				// A compléter
+				affichageStatsRegionMois();
 				break;
 		}
 	}
 	
-	// Pannels pour secrétaire
+	// Panels pour secrétaire
 	
 	private void affichageListeUtilisateurs() {
 		this.setContentPane(new PanelListeUtilisateurs(lesUtilisateurs));
@@ -150,12 +172,17 @@ public class MenuAppliRH extends JFrame {
 		this.revalidate();
 	}
 	
-	// Pannels pour Directeur RH
 	
-	// A compléter
+	// Panels pour Responsable suivi
 	
-	// Pannels pour Responsable suivi
+	private void affichageStatsRegionMois() {
+		this.setContentPane(new PanelStatsRegionMois());
+		this.revalidate();
+	}
 	
-	// A compléter
+	private void affichageStatsMois() {
+		this.setContentPane(new PanelStatsMois());
+		this.revalidate();
+	}
 
 }
